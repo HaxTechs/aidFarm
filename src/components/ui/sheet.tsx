@@ -6,6 +6,28 @@ import { XIcon } from "lucide-react"
 
 import { cn } from "@/lib/utils"
 
+// VisuallyHidden component for accessible hidden elements
+function VisuallyHidden({
+  ...props
+}: React.ComponentProps<"div">) {
+  return (
+    <div
+      style={{
+        position: "absolute",
+        width: "1px",
+        height: "1px",
+        padding: "0",
+        margin: "-1px",
+        overflow: "hidden",
+        clip: "rect(0, 0, 0, 0)",
+        whiteSpace: "nowrap",
+        borderWidth: "0",
+      }}
+      {...props}
+    />
+  )
+}
+
 function Sheet({ ...props }: React.ComponentProps<typeof SheetPrimitive.Root>) {
   return <SheetPrimitive.Root data-slot="sheet" {...props} />
 }
@@ -71,6 +93,9 @@ function SheetContent({
         )}
         {...props}
       >
+        <SheetPrimitive.Title asChild>
+          <VisuallyHidden>Menu</VisuallyHidden>
+        </SheetPrimitive.Title>
         {children}
         <SheetPrimitive.Close className="ring-offset-background focus:ring-ring data-[state=open]:bg-secondary absolute top-4 right-4 rounded-xs opacity-70 transition-opacity hover:opacity-100 focus:ring-2 focus:ring-offset-2 focus:outline-hidden disabled:pointer-events-none">
           <XIcon className="size-4" />
