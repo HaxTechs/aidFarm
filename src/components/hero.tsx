@@ -27,57 +27,48 @@ const containerVariant = {
   }
 }
 
+const backgroundImages = [
+  '/assets/hero/chicks.jpg',
+  '/assets/hero/hen1.jpg',
+  '/assets/hero/hen2.jpg',
+  '/assets/hero/hen3.jpg',
+]
+
 export function Hero() {
+  const [currentImageIndex, setCurrentImageIndex] = React.useState(0)
+
+  React.useEffect(() => {
+    const interval = setInterval(() => {
+      setCurrentImageIndex((prev) => (prev + 1) % backgroundImages.length)
+    }, 5000)
+    return () => clearInterval(interval)
+  }, [])
+
   return (
     <motion.section 
-      className="relative w-full overflow-hidden bg-gradient-to-br from-background via-background to-background"
+      className="relative w-full overflow-hidden bg-background"
       initial="hidden"
       whileInView="visible"
       viewport={{ once: true }}
     >
-      {/* Animated background elements */}
+      {/* Rotating background images */}
       <div className="absolute inset-0 overflow-hidden pointer-events-none">
-        <motion.div 
-          className="absolute -left-20 top-0 w-96 h-96 bg-primary/10 rounded-full blur-3xl"
-          animate={{
-            x: [0, 30, -20, 0],
-            y: [0, -50, 20, 0],
-            scale: [1, 1.1, 0.9, 1],
-          }}
-          transition={{
-            duration: 7,
-            repeat: Infinity,
-            ease: easeInOut
-          }}
-        />
-        <motion.div 
-          className="absolute -right-20 top-40 w-80 h-80 bg-accent/10 rounded-full blur-3xl"
-          animate={{
-            x: [0, -30, 20, 0],
-            y: [0, 50, -20, 0],
-            scale: [1, 0.9, 1.1, 1],
-          }}
-          transition={{
-            duration: 7,
-            repeat: Infinity,
-            ease: easeInOut,
-            delay: 2
-          }}
-        />
-        <motion.div 
-          className="absolute left-1/2 -translate-x-1/2 top-60 w-72 h-72 bg-primary/5 rounded-full blur-3xl"
-          animate={{
-            x: [0, -20, 30, 0],
-            y: [0, 40, -30, 0],
-            scale: [1, 1.05, 0.95, 1],
-          }}
-          transition={{
-            duration: 7,
-            repeat: Infinity,
-            ease: easeInOut,
-            delay: 4
-          }}
-        />
+        {backgroundImages.map((image, index) => (
+          <motion.div
+            key={index}
+            className="absolute inset-0"
+            style={{
+              backgroundImage: `url('${image}')`,
+              backgroundSize: 'cover',
+              backgroundPosition: 'center',
+            }}
+            initial={{ opacity: 0 }}
+            animate={{ opacity: index === currentImageIndex ? 1 : 0 }}
+            transition={{ duration: 1, ease: easeInOut }}
+          />
+        ))}
+        {/* Dark overlay for content readability */}
+        <div className="absolute inset-0 bg-background/70 dark:bg-background/80" />
       </div>
 
       {/* Subtle grain texture overlay */}

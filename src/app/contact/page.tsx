@@ -134,7 +134,7 @@ export function ContactPage() {
               return (
                 <Card
                   key={index}
-                  className="p-6 border-2 border-border hover:border-primary hover:shadow-xl transition-all hover:-translate-y-1 group"
+                  className="p-6 border-2 border-border hover:border-primary hover:shadow-xl transition-all hover:-translate-y-1 group shadow-md dark:shadow-lg"
                 >
                   <div className={`w-14 h-14 rounded-xl bg-gradient-to-br ${method.color} flex items-center justify-center mb-4 group-hover:scale-110 transition-transform`}>
                     <Icon className="w-7 h-7 text-white" />
@@ -162,7 +162,7 @@ export function ContactPage() {
           <div className="grid grid-cols-1 lg:grid-cols-3 gap-12">
             {/* Contact Form */}
             <div className="lg:col-span-2">
-              <Card className="p-8 border-2 border-border">
+              <Card className="p-8 border-2 border-border shadow-md dark:shadow-lg">
                 <h3 className="text-2xl font-bold text-foreground mb-6">
                   Send Us a Message
                 </h3>
@@ -273,7 +273,7 @@ export function ContactPage() {
             {/* Business Hours & FAQs */}
             <div className="space-y-6">
               {/* Business Hours */}
-              <Card className="p-6 border-2 border-border">
+              <Card className="p-6 border-2 border-border shadow-md dark:shadow-lg">
                 <div className="flex items-center gap-3 mb-4">
                   <div className="w-10 h-10 rounded-lg bg-gradient-to-br from-primary to-primary/80 flex items-center justify-center">
                     <Clock className="w-5 h-5 text-primary-foreground" />
@@ -296,7 +296,7 @@ export function ContactPage() {
               </Card>
 
               {/* Quick FAQs */}
-              <Card className="p-6 border-2 border-border">
+              <Card className="p-6 border-2 border-border shadow-md dark:shadow-lg">
                 <h3 className="text-lg font-bold text-foreground mb-4">Quick Answers</h3>
                 <div className="space-y-4">
                   {faqs.map((faq, index) => (

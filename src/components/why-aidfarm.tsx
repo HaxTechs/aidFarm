@@ -59,7 +59,7 @@ export function AboutPage() {
   ]
 
   return (
-    <div className="min-h-screen bg-white">
+    <div className="min-h-screen bg-white dark:bg-background">
       {/* Hero Section */}
       <motion.section 
         className="relative bg-gradient-to-br from-primary via-primary/80 to-primary/60 py-20 sm:py-24 overflow-hidden"
@@ -107,7 +107,7 @@ export function AboutPage() {
 
       {/* Our Story */}
       <motion.section 
-        className="py-20 sm:py-24"
+        className="py-20 sm:py-24 bg-background dark:bg-card"
         initial="hidden"
         whileInView="show"
         viewport={{ once: true }}
@@ -164,8 +164,6 @@ export function AboutPage() {
                 <div className="text-center p-8">
                   <motion.div 
                     className="w-32 h-32 mx-auto mb-6 rounded-full bg-gradient-to-br from-primary to-primary/80 flex items-center justify-center shadow-xl"
-                    animate={{ rotate: [0, 360] }}
-                    transition={{ duration: 20, repeat: Infinity, ease: "linear" }}
                   >
                     <svg className="w-16 h-16 text-white" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                       <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M3 12l2-2m0 0l7-7 7 7M5 10v10a1 1 0 001 1h3m10-11l2 2m-2-2v10a1 1 0 01-1 1h-3m-6 0a1 1 0 001-1v-4a1 1 0 011-1h2a1 1 0 011 1v4a1 1 0 001 1m-6 0h6" />
@@ -173,8 +171,6 @@ export function AboutPage() {
                   </motion.div>
                   <motion.div 
                     className="text-5xl font-bold text-primary mb-2"
-                    animate={{ scale: [1, 1.1, 1] }}
-                    transition={{ duration: 2, repeat: Infinity }}
                   >
                     8+
                   </motion.div>
@@ -188,7 +184,7 @@ export function AboutPage() {
 
       {/* Mission & Vision */}
       <motion.section 
-        className="bg-muted py-20 sm:py-24"
+        className="bg-muted dark:bg-background py-20 sm:py-24"
         initial="hidden"
         whileInView="show"
         viewport={{ once: true }}
@@ -248,7 +244,7 @@ export function AboutPage() {
 
       {/* Core Values */}
       <motion.section 
-        className="py-20 sm:py-24"
+        className="py-20 sm:py-24 bg-background"
         initial="hidden"
         whileInView="show"
         viewport={{ once: true }}

@@ -254,7 +254,7 @@ export function ProductsPage() {
       </section>
 
       {/* Additional Services */}
-      <section className="bg-gradient-to-b from-slate-50 to-white py-20 sm:py-24">
+      <section className="bg-gradient-to-b from-slate-50 to-white dark:from-background dark:to-card py-20 sm:py-24">
         <div className="mx-auto max-w-7xl px-4 sm:px-6">
           <div className="text-center mb-16">
             <div className="inline-flex items-center gap-2 rounded-full bg-primary/10 px-4 py-1.5 text-sm font-semibold text-primary mb-4">

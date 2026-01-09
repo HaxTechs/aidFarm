@@ -3,6 +3,7 @@
 import * as React from "react"
 import { motion, easeInOut, easeOut } from "framer-motion"
 import { Card } from "@/components/ui/card"
+import { Carousel } from "@/components/ui/carousel"
 import { Star } from "lucide-react"
 
 const testimonials = [
@@ -140,15 +141,9 @@ export function Testimonials() {
           </p>
         </motion.div>
 
-        {/* Testimonials Grid */}
-        <motion.div 
-          className="grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-3"
-          variants={containerVariants}
-          initial="hidden"
-          whileInView="show"
-          viewport={{ once: true }}
-        >
-          {testimonials.map((testimonial) => (
+        {/* Testimonials Carousel */}
+        <Carousel
+          items={testimonials.map((testimonial) => (
             <motion.div
               key={testimonial.name}
               variants={itemVariants}
@@ -172,18 +167,7 @@ export function Testimonials() {
                     {/* Rating */}
                     <div className="flex gap-1 mb-4">
                       {[...Array(testimonial.rating)].map((_, i) => (
-                        <motion.div
-                          key={i}
-                          animate={{ scale: [1, 1.1, 1] }}
-                          transition={{
-                            duration: 0.6,
-                            delay: i * 0.1,
-                            repeat: Infinity,
-                            repeatType: "reverse"
-                          }}
-                        >
-                          <Star className="w-5 h-5 fill-amber-400 text-amber-400" />
-                        </motion.div>
+                        <Star key={i} className="w-5 h-5 fill-amber-400 text-amber-400" />
                       ))}
                     </div>
 
@@ -221,7 +205,10 @@ export function Testimonials() {
               </motion.div>
             </motion.div>
           ))}
-        </motion.div>
+          itemsPerView={3}
+          autoplay={true}
+          autoplayInterval={6000}
+        />
 
         {/* Trust badges */}
         <motion.div 

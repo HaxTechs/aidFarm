@@ -118,11 +118,11 @@ export function Offerings() {
                     <div className="relative p-6 flex flex-col h-full">
                       {/* Icon */}
                       <motion.div 
-                        className={`inline-flex items-center justify-center w-14 h-14 rounded-xl ${offering.bgColor} mb-4`}
+                        className={`inline-flex items-center justify-center w-14 h-14 rounded-xl ${offering.bgColor} mb-4 dark:bg-card dark:border-2 dark:border-border`}
                         whileHover={{ scale: 1.1 }}
                         transition={{ duration: 0.3 }}
                       >
-                        <Icon className={`size-7 bg-gradient-to-br ${offering.color} bg-clip-text text-transparent`} />
+                        <Icon className={`size-7 text-foreground dark:text-primary`} />
                       </motion.div>
 
                       {/* Badge */}

@@ -64,7 +64,7 @@ export function AboutPage() {
       </section>
 
       {/* Our Story */}
-      <section className="py-20 sm:py-24">
+      <section className="py-20 sm:py-24 bg-background">
         <div className="mx-auto max-w-7xl px-4 sm:px-6">
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-16 items-center">
             <div>
@@ -93,7 +93,7 @@ export function AboutPage() {
             </div>
 
             <div className="relative">
-              <div className="aspect-[4/3] rounded-2xl bg-gradient-to-br from-emerald-100 to-teal-100 flex items-center justify-center">
+              <div className="aspect-[4/3] rounded-2xl bg-gradient-to-br from-emerald-100 to-teal-100 dark:from-primary/20 dark:to-primary/10 flex items-center justify-center">
                 <div className="text-center p-8">
                   <div className="w-32 h-32 mx-auto mb-6 rounded-full bg-gradient-to-br from-emerald-500 to-teal-500 flex items-center justify-center shadow-xl">
                     <svg className="w-16 h-16 text-white" fill="none" viewBox="0 0 24 24" stroke="currentColor">
@@ -110,7 +110,7 @@ export function AboutPage() {
       </section>
 
       {/* Mission & Vision */}
-      <section className="bg-muted py-20 sm:py-24">
+      <section className="bg-muted dark:bg-card py-20 sm:py-24">
         <div className="mx-auto max-w-7xl px-4 sm:px-6">
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-8">
             <div className="bg-background rounded-2xl p-8 sm:p-10 border-2 border-primary/20 hover:border-primary/40 hover:shadow-xl transition-all">
@@ -141,7 +141,7 @@ export function AboutPage() {
       </section>
 
       {/* Core Values */}
-      <section className="py-20 sm:py-24">
+      <section className="py-20 sm:py-24 bg-background">
         <div className="mx-auto max-w-7xl px-4 sm:px-6">
           <div className="text-center mb-16">
             <div className="inline-flex items-center gap-2 rounded-full bg-primary/10 px-4 py-1.5 text-sm font-semibold text-primary mb-4">
@@ -176,7 +176,7 @@ export function AboutPage() {
       </section>
 
       {/* Timeline */}
-      <section className="bg-gradient-to-b from-slate-50 to-white py-20 sm:py-24">
+      <section className="bg-gradient-to-b from-slate-50 to-white dark:from-background dark:to-card py-20 sm:py-24">
         <div className="mx-auto max-w-5xl px-4 sm:px-6">
           <div className="text-center mb-16">
             <div className="inline-flex items-center gap-2 rounded-full bg-primary/10 px-4 py-1.5 text-sm font-semibold text-primary mb-4">
