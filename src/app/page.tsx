@@ -1,5 +1,6 @@
 import Hero from "@/components/hero"
 import Offerings from "@/components/offerings"
+import { FarmGallery } from "@/components/farm-gallery"  
 import WhyAidFarm from "@/components/why-aidfarm"
 import Stats from "@/components/stats"
 import Testimonials from "@/components/testimonials"
@@ -12,6 +13,7 @@ export default function Home() {
       <Hero />
       <Offerings />
       <WhyAidFarm />
+      <FarmGallery />
       <Stats />
       <Testimonials />
       <FinalCTA />

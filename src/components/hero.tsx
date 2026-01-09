@@ -46,13 +46,13 @@ export function Hero() {
 
   return (
     <motion.section 
-      className="relative w-full overflow-hidden bg-background"
+      className="relative w-full overflow-hidden bg-background min-h-[90vh] flex items-center"
       initial="hidden"
       whileInView="visible"
       viewport={{ once: true }}
     >
-      {/* Rotating background images */}
-      <div className="absolute inset-0 overflow-hidden pointer-events-none">
+      {/* Rotating background images with elegant fade */}
+      <div className="absolute inset-0 overflow-hidden">
         {backgroundImages.map((image, index) => (
           <motion.div
             key={index}
@@ -63,12 +63,22 @@ export function Hero() {
               backgroundPosition: 'center',
             }}
             initial={{ opacity: 0 }}
-            animate={{ opacity: index === currentImageIndex ? 1 : 0 }}
-            transition={{ duration: 1, ease: easeInOut }}
+            animate={{ 
+              opacity: index === currentImageIndex ? 1 : 0,
+              scale: index === currentImageIndex ? 1.05 : 1
+            }}
+            transition={{ 
+              opacity: { duration: 1.5, ease: easeInOut },
+              scale: { duration: 5, ease: easeInOut }
+            }}
           />
         ))}
-        {/* Dark overlay for content readability */}
-        <div className="absolute inset-0 bg-background/70 dark:bg-background/80" />
+        
+        {/* Elegant gradient overlay for readability */}
+        <div className="absolute inset-0 bg-gradient-to-br from-background/45 via-background/85 to-background/50 dark:from-background/98 dark:via-background/65 dark:to-background/35" />
+        
+        {/* Radial gradient for focus */}
+        <div className="absolute inset-0 bg-[radial-gradient(circle_at_center,transparent_0%,var(--background)_100%)]" />
       </div>
 
       {/* Subtle grain texture overlay */}
@@ -80,11 +90,8 @@ export function Hero() {
           <motion.div 
             className="flex justify-center mb-6"
             variants={fadeInVariant}
-            initial="hidden"
-            whileInView="visible"
-            viewport={{ once: true }}
           >
-            <div className="inline-flex items-center gap-2 rounded-full bg-primary/10 px-4 py-1.5 text-sm font-medium text-primary border border-primary/20">
+            <div className="inline-flex items-center gap-2 rounded-full bg-primary/10 backdrop-blur-sm px-4 py-1.5 text-sm font-medium text-primary border border-primary/20 shadow-lg">
               <motion.div 
                 className="w-2 h-2 bg-primary rounded-full"
                 animate={{ scale: [1, 1.2, 1] }}
@@ -98,9 +105,6 @@ export function Hero() {
           <motion.h1 
             className="text-center text-4xl font-bold leading-tight tracking-tight sm:text-5xl lg:text-6xl text-foreground"
             variants={fadeInUpVariant}
-            initial="hidden"
-            whileInView="visible"
-            viewport={{ once: true }}
           >
             Premium Poultry,{" "}
             <span className="relative inline-block">
@@ -115,9 +119,6 @@ export function Hero() {
           <motion.p 
             className="mt-6 text-center text-lg sm:text-xl text-muted-foreground leading-relaxed max-w-2xl mx-auto"
             variants={fadeInUpVariant}
-            initial="hidden"
-            whileInView="visible"
-            viewport={{ once: true }}
             transition={{ duration: 0.6, delay: 0.2, ease: easeOut }}
           >
             From our farm to your table. Ethically raised, premium quality poultry and eggs delivered across Ghana. 
@@ -128,9 +129,6 @@ export function Hero() {
           <motion.div 
             className="mt-10 flex flex-col items-center gap-4 sm:flex-row sm:justify-center"
             variants={containerVariant}
-            initial="hidden"
-            whileInView="visible"
-            viewport={{ once: true }}
           >
             <motion.div variants={fadeInUpVariant}>
               <Button 
@@ -146,13 +144,7 @@ export function Hero() {
                   whileHover={{ scale: 1.05 }}
                   whileTap={{ scale: 0.95 }}
                 >
-                  <motion.div 
-                    className="group-hover:scale-110 transition-transform"
-                    animate={{ y: [0, -2, 0] }}
-                    transition={{ duration: 2, repeat: Infinity }}
-                  >
-                    <MessageCircle className="size-5" />
-                  </motion.div>
+                  <MessageCircle className="size-5" />
                   Order on WhatsApp
                 </motion.a>
               </Button>
@@ -182,14 +174,11 @@ export function Hero() {
           <motion.div 
             className="mt-12 flex flex-wrap items-center justify-center gap-6 sm:gap-8 text-sm text-muted-foreground"
             variants={containerVariant}
-            initial="hidden"
-            whileInView="visible"
-            viewport={{ once: true }}
           >
             {[
-              { title: "Certified Quality", icon: 1 },
-              { title: "Same-Day Delivery", icon: 2 },
-              { title: "1,200+ Happy Customers", icon: 3 }
+              { title: "Certified Quality" },
+              { title: "Same-Day Delivery" },
+              { title: "1,200+ Happy Customers" }
             ].map((item, index) => (
               <motion.div key={index} className="flex items-center gap-2" variants={fadeInUpVariant}>
                 <svg className="w-5 h-5 text-primary" fill="currentColor" viewBox="0 0 20 20">

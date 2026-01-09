@@ -13,7 +13,7 @@ const offerings = [
     icon: ShoppingCart,
     badge: "Most Popular",
     color: "from-amber-500 to-orange-500",
-    bgColor: "bg-amber-50",
+    image: "/assets/adult-chickens/chicken1.jpg",
   },
   {
     title: "Table & Bulk Eggs",
@@ -21,21 +21,21 @@ const offerings = [
     icon: Egg,
     badge: "Bulk Available",
     color: "from-emerald-500 to-teal-500",
-    bgColor: "bg-emerald-50",
+    image: "/assets/other/egg.jpg",
   },
   {
     title: "Wholesale Supply",
     description: "Large-scale poultry fulfillment for wholesalers, markets, and distributors across Ghana.",
     icon: Truck,
     color: "from-blue-500 to-indigo-500",
-    bgColor: "bg-blue-50",
+    image: "/assets/feeding/feed1.jpg",
   },
   {
     title: "Restaurant & Events",
     description: "Specialized service for restaurants and events with dedicated logistics and custom packaging.",
     icon: Users,
     color: "from-purple-500 to-pink-500",
-    bgColor: "bg-purple-50",
+    image: "/assets/adult-chickens/chicken2.jpg",
   },
 ]
 
@@ -74,9 +74,6 @@ export function Offerings() {
         <motion.div 
           className="mx-auto max-w-2xl text-center mb-16"
           variants={itemVariants}
-          initial="hidden"
-          whileInView="show"
-          viewport={{ once: true }}
         >
           <motion.div 
             className="inline-flex items-center gap-2 rounded-full bg-primary/10 px-4 py-1.5 text-sm font-semibold text-primary mb-4"
@@ -95,9 +92,6 @@ export function Offerings() {
         <motion.div 
           className="grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-4"
           variants={containerVariants}
-          initial="hidden"
-          whileInView="show"
-          viewport={{ once: true }}
         >
           {offerings.map((offering) => {
             const Icon = offering.icon
@@ -111,34 +105,45 @@ export function Offerings() {
                   whileHover={{ y: -4 }}
                   transition={{ duration: 0.3 }}
                 >
-                  <Card className="h-full border-2 border-border hover:border-primary hover:shadow-xl transition-all duration-300 overflow-hidden">
-                    {/* Gradient background on hover */}
-                    <div className={`absolute inset-0 bg-gradient-to-br ${offering.color} opacity-0 group-hover:opacity-5 transition-opacity duration-300`} />
-                    
-                    <div className="relative p-6 flex flex-col h-full">
-                      {/* Icon */}
-                      <motion.div 
-                        className={`inline-flex items-center justify-center w-14 h-14 rounded-xl ${offering.bgColor} mb-4 dark:bg-card dark:border-2 dark:border-border`}
+                  <Card className="h-full border-2 border-border hover:border-primary hover:shadow-xl transition-all duration-300 overflow-hidden p-0">
+                    {/* Image Section */}
+                    <div className="relative h-48 overflow-hidden">
+                      <motion.img
+                        src={offering.image}
+                        alt={offering.title}
+                        className="w-full h-full object-cover"
                         whileHover={{ scale: 1.1 }}
-                        transition={{ duration: 0.3 }}
-                      >
-                        <Icon className={`size-7 text-foreground dark:text-primary`} />
-                      </motion.div>
+                        transition={{ duration: 0.4 }}
+                      />
+                      {/* Gradient overlay */}
+                      <div className={`absolute inset-0 bg-gradient-to-t from-background via-transparent to-transparent opacity-60`} />
+                      
+                      {/* Icon badge on image */}
+                      <div className="absolute top-4 left-4">
+                        <motion.div 
+                          className={`w-12 h-12 rounded-xl bg-gradient-to-br ${offering.color} flex items-center justify-center shadow-lg`}
+                          whileHover={{ rotate: 12, scale: 1.1 }}
+                        >
+                          <Icon className="size-6 text-white" />
+                        </motion.div>
+                      </div>
 
                       {/* Badge */}
                       {offering.badge && (
-                        <div className="mb-3">
-                          <Badge className={`bg-gradient-to-r ${offering.color} text-white border-0 shadow-sm`}>
+                        <div className="absolute top-4 right-4">
+                          <Badge className={`bg-gradient-to-r ${offering.color} text-white border-0 shadow-lg`}>
                             {offering.badge}
                           </Badge>
                         </div>
                       )}
+                    </div>
 
-                      {/* Content */}
+                    {/* Content Section */}
+                    <div className="p-6">
                       <CardTitle className="text-xl mb-2 text-foreground group-hover:text-primary transition-colors">
                         {offering.title}
                       </CardTitle>
-                      <CardDescription className="text-sm leading-relaxed text-muted-foreground flex-grow">
+                      <CardDescription className="text-sm leading-relaxed text-muted-foreground">
                         {offering.description}
                       </CardDescription>
 
