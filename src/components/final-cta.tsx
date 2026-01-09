@@ -6,7 +6,7 @@ import { MessageCircle, Phone, ArrowRight } from "lucide-react"
 
 export function FinalCTA() {
   return (
-    <section className="relative bg-gradient-to-br from-slate-900 via-slate-800 to-emerald-900 py-20 sm:py-24 overflow-hidden">
+    <section className="relative bg-gradient-to-br from-card via-card to-card py-20 sm:py-24 overflow-hidden">
       {/* Background pattern */}
       <div className="absolute inset-0 opacity-10">
         <div className="absolute inset-0" style={{
@@ -15,27 +15,27 @@ export function FinalCTA() {
       </div>
 
       {/* Animated blobs */}
-      <div className="absolute top-0 left-0 w-96 h-96 bg-emerald-500/20 rounded-full blur-3xl animate-blob" />
-      <div className="absolute bottom-0 right-0 w-96 h-96 bg-amber-500/20 rounded-full blur-3xl animate-blob animation-delay-2000" />
-      <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-96 h-96 bg-teal-500/20 rounded-full blur-3xl animate-blob animation-delay-4000" />
+      <div className="absolute top-0 left-0 w-96 h-96 bg-primary/20 rounded-full blur-3xl animate-blob" />
+      <div className="absolute bottom-0 right-0 w-96 h-96 bg-primary/20 rounded-full blur-3xl animate-blob animation-delay-2000" />
+      <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-96 h-96 bg-accent/20 rounded-full blur-3xl animate-blob animation-delay-4000" />
 
       <div className="mx-auto max-w-7xl px-4 sm:px-6 relative z-10">
         <div className="mx-auto max-w-4xl">
           {/* Main content */}
           <div className="text-center space-y-6 mb-12">
-            <div className="inline-flex items-center gap-2 rounded-full bg-white/10 backdrop-blur-sm px-4 py-1.5 text-sm font-semibold text-emerald-300 border border-emerald-500/20">
-              <div className="w-2 h-2 bg-emerald-400 rounded-full animate-pulse" />
+            <div className="inline-flex items-center gap-2 rounded-full bg-primary/10 backdrop-blur-sm px-4 py-1.5 text-sm font-semibold text-primary border border-primary/20">
+              <div className="w-2 h-2 bg-primary rounded-full animate-pulse" />
               Available 24/7
             </div>
 
             <h2 className="text-3xl sm:text-4xl lg:text-5xl font-bold text-white leading-tight">
               Ready to Order Fresh,{" "}
-              <span className="text-transparent bg-clip-text bg-gradient-to-r from-emerald-400 to-teal-400">
+              <span className="text-transparent bg-clip-text bg-gradient-to-r from-primary to-accent">
                 Quality Poultry?
               </span>
             </h2>
 
-            <p className="text-lg sm:text-xl text-slate-300 leading-relaxed max-w-2xl mx-auto">
+            <p className="text-lg sm:text-xl text-white/80 leading-relaxed max-w-2xl mx-auto">
               Get in touch now for quick quotes, bulk orders, or same-day delivery. 
               Our team is ready to serve you.
             </p>
@@ -46,7 +46,7 @@ export function FinalCTA() {
             <Button 
               asChild 
               size="lg"
-              className="w-full sm:w-auto bg-gradient-to-r from-emerald-500 to-teal-500 hover:from-emerald-600 hover:to-teal-600 text-white shadow-xl shadow-emerald-500/30 hover:shadow-2xl hover:shadow-emerald-500/40 transition-all duration-300 group border-0 h-14 px-8 text-base font-semibold"
+              className="w-full sm:w-auto bg-primary hover:bg-primary/90 text-primary-foreground shadow-xl shadow-primary/30 hover:shadow-2xl hover:shadow-primary/40 transition-all duration-300 group border-0 h-14 px-8 text-base font-semibold"
             >
               <a
                 href="https://wa.me/?text=I%27m%20interested%20in%20AidFarm%20products"
@@ -76,23 +76,23 @@ export function FinalCTA() {
           {/* Contact info cards */}
           <div className="grid grid-cols-1 sm:grid-cols-3 gap-4 max-w-3xl mx-auto mb-12">
             <div className="bg-white/5 backdrop-blur-sm rounded-xl p-4 border border-white/10 text-center group hover:bg-white/10 transition-all">
-              <div className="text-emerald-400 font-semibold mb-1">Response Time</div>
+              <div className="text-primary font-semibold mb-1">Response Time</div>
               <div className="text-white/80 text-sm">Under 30 minutes</div>
             </div>
             <div className="bg-white/5 backdrop-blur-sm rounded-xl p-4 border border-white/10 text-center group hover:bg-white/10 transition-all">
-              <div className="text-emerald-400 font-semibold mb-1">Delivery</div>
+              <div className="text-primary font-semibold mb-1">Delivery</div>
               <div className="text-white/80 text-sm">Same-day available</div>
             </div>
             <div className="bg-white/5 backdrop-blur-sm rounded-xl p-4 border border-white/10 text-center group hover:bg-white/10 transition-all">
-              <div className="text-emerald-400 font-semibold mb-1">Support</div>
+              <div className="text-primary font-semibold mb-1">Support</div>
               <div className="text-white/80 text-sm">7 days a week</div>
             </div>
           </div>
 
           {/* Features list */}
-          <div className="flex flex-wrap items-center justify-center gap-6 text-sm text-slate-300">
+          <div className="flex flex-wrap items-center justify-center gap-6 text-sm text-white/80">
             <div className="flex items-center gap-2">
-              <svg className="w-5 h-5 text-emerald-400" fill="currentColor" viewBox="0 0 20 20">
+              <svg className="w-5 h-5 text-primary" fill="currentColor" viewBox="0 0 20 20">
                 <path fillRule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clipRule="evenodd" />
               </svg>
               <span>No Minimum Order</span>

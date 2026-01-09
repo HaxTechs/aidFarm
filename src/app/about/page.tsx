@@ -42,9 +42,9 @@ export function AboutPage() {
   ]
 
   return (
-    <div className="min-h-screen bg-white">
+    <div className="min-h-screen bg-background">
       {/* Hero Section */}
-      <section className="relative bg-gradient-to-br from-emerald-600 via-emerald-700 to-teal-800 py-20 sm:py-24 overflow-hidden">
+      <section className="relative bg-gradient-to-br from-primary via-primary/80 to-primary/60 py-20 sm:py-24 overflow-hidden">
         <div className="absolute inset-0 opacity-10">
           <div className="absolute inset-0" style={{
             backgroundImage: `url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%23ffffff' fill-opacity='1'%3E%3Cpath d='M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E")`,
@@ -56,7 +56,7 @@ export function AboutPage() {
             <h1 className="text-4xl sm:text-5xl lg:text-6xl font-bold text-white mb-6 leading-tight">
               About AidFarm
             </h1>
-            <p className="text-xl text-emerald-100 leading-relaxed">
+            <p className="text-xl text-white/80 leading-relaxed">
               Committed to delivering premium poultry with integrity, quality, and care since 2016
             </p>
           </div>
@@ -68,13 +68,13 @@ export function AboutPage() {
         <div className="mx-auto max-w-7xl px-4 sm:px-6">
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-16 items-center">
             <div>
-              <div className="inline-flex items-center gap-2 rounded-full bg-emerald-100 px-4 py-1.5 text-sm font-semibold text-emerald-700 mb-6">
+              <div className="inline-flex items-center gap-2 rounded-full bg-primary/10 px-4 py-1.5 text-sm font-semibold text-primary mb-6">
                 Our Story
               </div>
-              <h2 className="text-3xl sm:text-4xl font-bold text-slate-900 mb-6">
+              <h2 className="text-3xl sm:text-4xl font-bold text-foreground mb-6">
                 From Humble Beginnings to Ghana's Trusted Poultry Supplier
               </h2>
-              <div className="space-y-4 text-lg text-slate-600 leading-relaxed">
+              <div className="space-y-4 text-lg text-muted-foreground leading-relaxed">
                 <p>
                   AidFarm was founded in 2016 with a simple but powerful vision: to provide Ghanaians with access to fresh, 
                   high-quality poultry raised with ethical farming practices. What started as a small operation has grown 
@@ -110,10 +110,10 @@ export function AboutPage() {
       </section>
 
       {/* Mission & Vision */}
-      <section className="bg-slate-50 py-20 sm:py-24">
+      <section className="bg-muted py-20 sm:py-24">
         <div className="mx-auto max-w-7xl px-4 sm:px-6">
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-8">
-            <div className="bg-white rounded-2xl p-8 sm:p-10 border-2 border-emerald-100 hover:border-emerald-200 hover:shadow-xl transition-all">
+            <div className="bg-background rounded-2xl p-8 sm:p-10 border-2 border-primary/20 hover:border-primary/40 hover:shadow-xl transition-all">
               <div className="w-16 h-16 rounded-xl bg-gradient-to-br from-emerald-500 to-teal-500 flex items-center justify-center mb-6">
                 <Target className="w-8 h-8 text-white" />
               </div>
@@ -150,7 +150,7 @@ export function AboutPage() {
             <h2 className="text-3xl sm:text-4xl font-bold text-slate-900 mb-4">
               What Drives Us Every Day
             </h2>
-            <p className="text-lg text-slate-600 max-w-2xl mx-auto">
+            <p className="text-lg text-muted-foreground max-w-2xl mx-auto">
               Our core values guide every decision we make and every interaction we have
             </p>
           </div>
@@ -161,13 +161,13 @@ export function AboutPage() {
               return (
                 <div
                   key={value.title}
-                  className="bg-white rounded-2xl p-6 border-2 border-slate-100 hover:border-emerald-200 hover:shadow-xl transition-all hover:-translate-y-1 group"
+                  className="bg-background rounded-2xl p-6 border-2 border-border hover:border-primary hover:shadow-xl transition-all hover:-translate-y-1 group"
                 >
                   <div className={`w-14 h-14 rounded-xl bg-gradient-to-br ${value.color} flex items-center justify-center mb-4 group-hover:scale-110 transition-transform`}>
                     <Icon className="w-7 h-7 text-white" />
                   </div>
-                  <h3 className="text-xl font-bold text-slate-900 mb-2">{value.title}</h3>
-                  <p className="text-sm text-slate-600 leading-relaxed">{value.description}</p>
+                  <h3 className="text-xl font-bold text-foreground mb-2">{value.title}</h3>
+                  <p className="text-sm text-muted-foreground leading-relaxed">{value.description}</p>
                 </div>
               )
             })}

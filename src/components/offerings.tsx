@@ -40,19 +40,19 @@ const offerings = [
 
 export function Offerings() {
   return (
-    <section className="bg-white py-20 sm:py-24 relative overflow-hidden">
+    <section className="bg-background py-20 sm:py-24 relative overflow-hidden">
       {/* Background decoration */}
-      <div className="absolute top-0 left-0 w-full h-1 bg-gradient-to-r from-transparent via-emerald-500/20 to-transparent" />
+      <div className="absolute top-0 left-0 w-full h-1 bg-gradient-to-r from-transparent via-primary/20 to-transparent" />
       
       <div className="mx-auto max-w-7xl px-4 sm:px-6">
         <div className="mx-auto max-w-2xl text-center mb-16">
-          <div className="inline-flex items-center gap-2 rounded-full bg-emerald-100 px-4 py-1.5 text-sm font-semibold text-emerald-700 mb-4">
+          <div className="inline-flex items-center gap-2 rounded-full bg-primary/10 px-4 py-1.5 text-sm font-semibold text-primary mb-4">
             Our Services
           </div>
-          <h2 className="text-3xl sm:text-4xl font-bold text-slate-900 mb-4">
+          <h2 className="text-3xl sm:text-4xl font-bold text-foreground mb-4">
             What We Offer
           </h2>
-          <p className="text-lg text-slate-600 leading-relaxed">
+          <p className="text-lg text-muted-foreground leading-relaxed">
             Quality poultry products tailored for individuals, restaurants, and bulk buyers across Ghana.
           </p>
         </div>
@@ -66,7 +66,7 @@ export function Offerings() {
                 className="group relative animate-fade-in-up"
                 style={{ animationDelay: `${index * 100}ms` }}
               >
-                <Card className="h-full border-2 border-slate-100 hover:border-emerald-200 hover:shadow-xl transition-all duration-300 group-hover:-translate-y-1 overflow-hidden">
+                <Card className="h-full border-2 border-border hover:border-primary hover:shadow-xl transition-all duration-300 group-hover:-translate-y-1 overflow-hidden">
                   {/* Gradient background on hover */}
                   <div className={`absolute inset-0 bg-gradient-to-br ${offering.color} opacity-0 group-hover:opacity-5 transition-opacity duration-300`} />
                   
@@ -86,16 +86,16 @@ export function Offerings() {
                     )}
 
                     {/* Content */}
-                    <CardTitle className="text-xl mb-2 text-slate-900 group-hover:text-emerald-700 transition-colors">
+                    <CardTitle className="text-xl mb-2 text-foreground group-hover:text-primary transition-colors">
                       {offering.title}
                     </CardTitle>
-                    <CardDescription className="text-sm leading-relaxed text-slate-600 flex-grow">
+                    <CardDescription className="text-sm leading-relaxed text-muted-foreground flex-grow">
                       {offering.description}
                     </CardDescription>
 
                     {/* Decorative element */}
-                    <div className="mt-4 pt-4 border-t border-slate-100 group-hover:border-emerald-200 transition-colors">
-                      <div className="flex items-center text-sm font-medium text-emerald-600 opacity-0 group-hover:opacity-100 transition-opacity">
+                    <div className="mt-4 pt-4 border-t border-border group-hover:border-primary transition-colors">
+                      <div className="flex items-center text-sm font-medium text-primary opacity-0 group-hover:opacity-100 transition-opacity">
                         <span>Learn more</span>
                         <svg className="ml-2 w-4 h-4 group-hover:translate-x-1 transition-transform" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                           <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
@@ -116,7 +116,7 @@ export function Offerings() {
           </p>
           <a
             href="/contact"
-            className="inline-flex items-center gap-2 px-6 py-3 rounded-lg bg-slate-100 hover:bg-emerald-50 text-slate-700 hover:text-emerald-700 font-medium transition-all"
+            className="inline-flex items-center gap-2 px-6 py-3 rounded-lg bg-muted hover:bg-primary/5 text-foreground hover:text-primary font-medium transition-all"
           >
             Contact Our Team
             <svg className="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">

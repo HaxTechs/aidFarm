@@ -48,7 +48,7 @@ const stats = [
 
 export function Stats() {
   return (
-    <section className="relative bg-gradient-to-b from-emerald-600 to-emerald-700 py-16 sm:py-20 overflow-hidden">
+    <section className="relative bg-gradient-to-b from-primary to-primary/80 py-16 sm:py-20 overflow-hidden">
       {/* Background pattern */}
       <div className="absolute inset-0 opacity-10">
         <div className="absolute inset-0" style={{
@@ -57,8 +57,8 @@ export function Stats() {
       </div>
 
       {/* Decorative blobs */}
-      <div className="absolute top-0 left-1/4 w-96 h-96 bg-emerald-400/20 rounded-full blur-3xl" />
-      <div className="absolute bottom-0 right-1/4 w-96 h-96 bg-teal-400/20 rounded-full blur-3xl" />
+      <div className="absolute top-0 left-1/4 w-96 h-96 bg-primary/20 rounded-full blur-3xl" />
+      <div className="absolute bottom-0 right-1/4 w-96 h-96 bg-primary/20 rounded-full blur-3xl" />
 
       <div className="mx-auto max-w-7xl px-4 sm:px-6 relative z-10">
         {/* Header */}
@@ -69,7 +69,7 @@ export function Stats() {
           <h2 className="text-3xl sm:text-4xl font-bold text-white mb-3">
             Trusted by Thousands
           </h2>
-          <p className="text-emerald-100 max-w-2xl mx-auto">
+          <p className="text-white/80 max-w-2xl mx-auto">
             Numbers that speak to our commitment to excellence and customer satisfaction
           </p>
         </div>
@@ -104,7 +104,7 @@ export function Stats() {
                 </div>
 
                 {/* Label */}
-                <div className="text-sm sm:text-base font-medium text-emerald-50 leading-tight">
+                <div className="text-sm sm:text-base font-medium text-white leading-tight">
                   {stat.label}
                 </div>
               </div>
@@ -117,7 +117,7 @@ export function Stats() {
 
         {/* Bottom text */}
         <div className="mt-12 text-center">
-          <p className="text-emerald-100 text-sm sm:text-base">
+          <p className="text-white/80 text-sm sm:text-base">
             Join our growing family of satisfied customers across Ghana
           </p>
         </div>

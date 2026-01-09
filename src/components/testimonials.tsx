@@ -63,21 +63,21 @@ const testimonials = [
 
 export function Testimonials() {
   return (
-    <section className="bg-gradient-to-b from-white to-slate-50 py-20 sm:py-24 relative overflow-hidden">
+    <section className="bg-gradient-to-b from-background to-muted py-20 sm:py-24 relative overflow-hidden">
       {/* Background decoration */}
-      <div className="absolute top-0 right-0 w-96 h-96 bg-emerald-100/40 rounded-full blur-3xl" />
-      <div className="absolute bottom-0 left-0 w-96 h-96 bg-amber-100/40 rounded-full blur-3xl" />
+      <div className="absolute top-0 right-0 w-96 h-96 bg-primary/10 rounded-full blur-3xl" />
+      <div className="absolute bottom-0 left-0 w-96 h-96 bg-accent/10 rounded-full blur-3xl" />
 
       <div className="mx-auto max-w-7xl px-4 sm:px-6 relative z-10">
         {/* Header */}
         <div className="mx-auto max-w-2xl text-center mb-16">
-          <div className="inline-flex items-center gap-2 rounded-full bg-emerald-100 px-4 py-1.5 text-sm font-semibold text-emerald-700 mb-4">
+          <div className="inline-flex items-center gap-2 rounded-full bg-primary/10 px-4 py-1.5 text-sm font-semibold text-primary mb-4">
             Customer Reviews
           </div>
-          <h2 className="text-3xl sm:text-4xl font-bold text-slate-900 mb-4">
+          <h2 className="text-3xl sm:text-4xl font-bold text-foreground mb-4">
             What Our Customers Say
           </h2>
-          <p className="text-lg text-slate-600">
+          <p className="text-lg text-muted-foreground">
             Don't just take our word for it - hear from the people who trust us with their poultry needs
           </p>
         </div>
@@ -90,14 +90,14 @@ export function Testimonials() {
               className="animate-fade-in-up"
               style={{ animationDelay: `${index * 100}ms` }}
             >
-              <Card className="h-full p-6 sm:p-8 border-2 border-slate-100 hover:border-emerald-200 hover:shadow-xl transition-all duration-300 hover:-translate-y-1 group relative overflow-hidden">
+              <Card className="h-full p-6 sm:p-8 border-2 border-border hover:border-primary hover:shadow-xl transition-all duration-300 hover:-translate-y-1 group relative overflow-hidden">
                 {/* Gradient overlay */}
                 <div className={`absolute top-0 right-0 w-32 h-32 bg-gradient-to-br ${testimonial.color} opacity-0 group-hover:opacity-5 transition-opacity duration-300 rounded-bl-full`} />
                 
                 <div className="relative flex flex-col h-full">
                   {/* Quote Icon */}
                   <div className="mb-4">
-                    <svg className="w-10 h-10 text-emerald-500/20 group-hover:text-emerald-500/30 transition-colors" fill="currentColor" viewBox="0 0 24 24">
+                    <svg className="w-10 h-10 text-primary/20 group-hover:text-primary/30 transition-colors" fill="currentColor" viewBox="0 0 24 24">
                       <path d="M14.017 21v-7.391c0-5.704 3.731-9.57 8.983-10.609l.995 2.151c-2.432.917-3.995 3.638-3.995 5.849h4v10h-9.983zm-14.017 0v-7.391c0-5.704 3.748-9.57 9-10.609l.996 2.151c-2.433.917-3.996 3.638-3.996 5.849h3.983v10h-9.983z" />
                     </svg>
                   </div>
@@ -110,12 +110,12 @@ export function Testimonials() {
                   </div>
 
                   {/* Quote */}
-                  <blockquote className="text-slate-700 leading-relaxed flex-grow mb-6">
+                  <blockquote className="text-foreground leading-relaxed flex-grow mb-6">
                     "{testimonial.quote}"
                   </blockquote>
 
                   {/* Author */}
-                  <div className="flex items-center gap-4 pt-6 border-t border-slate-100">
+                  <div className="flex items-center gap-4 pt-6 border-t border-border">
                     {/* Avatar */}
                     <div className={`flex-shrink-0 w-12 h-12 rounded-full bg-gradient-to-br ${testimonial.color} flex items-center justify-center text-white font-bold shadow-md`}>
                       {testimonial.image}
@@ -123,10 +123,10 @@ export function Testimonials() {
                     
                     {/* Info */}
                     <div className="flex-grow min-w-0">
-                      <div className="font-semibold text-slate-900 truncate">
+                      <div className="font-semibold text-foreground truncate">
                         {testimonial.name}
                       </div>
-                      <div className="text-sm text-slate-600 truncate">
+                      <div className="text-sm text-muted-foreground truncate">
                         {testimonial.role}
                       </div>
                     </div>
@@ -156,31 +156,31 @@ export function Testimonials() {
                 ))}
               </div>
               <div>
-                <div className="font-semibold text-slate-900">1,200+</div>
+                <div className="font-semibold text-foreground">1,200+</div>
                 <div className="text-sm">Happy Customers</div>
               </div>
             </div>
 
-            <div className="flex items-center gap-3 text-slate-600">
+            <div className="flex items-center gap-3 text-muted-foreground">
               <div className="flex gap-1">
                 {[...Array(5)].map((_, i) => (
                   <Star key={i} className="w-6 h-6 fill-amber-400 text-amber-400" />
                 ))}
               </div>
               <div>
-                <div className="font-semibold text-slate-900">4.9/5</div>
+                <div className="font-semibold text-foreground">4.9/5</div>
                 <div className="text-sm">Average Rating</div>
               </div>
             </div>
 
-            <div className="flex items-center gap-3 text-slate-600">
-              <div className="w-12 h-12 rounded-full bg-emerald-100 flex items-center justify-center">
-                <svg className="w-6 h-6 text-emerald-600" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+            <div className="flex items-center gap-3 text-muted-foreground">
+              <div className="w-12 h-12 rounded-full bg-primary/10 flex items-center justify-center">
+                <svg className="w-6 h-6 text-primary" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" />
                 </svg>
               </div>
               <div>
-                <div className="font-semibold text-slate-900">99%</div>
+                <div className="font-semibold text-foreground">99%</div>
                 <div className="text-sm">Satisfaction Rate</div>
               </div>
             </div>
