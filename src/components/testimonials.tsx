@@ -1,6 +1,7 @@
 "use client"
 
 import * as React from "react"
+import { motion, easeInOut, easeOut } from "framer-motion"
 import { Card } from "@/components/ui/card"
 import { Star } from "lucide-react"
 
@@ -61,107 +62,206 @@ const testimonials = [
   },
 ]
 
+const containerVariants = {
+  hidden: { opacity: 0 },
+  show: {
+    opacity: 1,
+    transition: {
+      staggerChildren: 0.1,
+      delayChildren: 0.2
+    }
+  }
+}
+
+const itemVariants = {
+  hidden: { opacity: 0, y: 20 },
+  show: { opacity: 1, y: 0, transition: { duration: 0.6, ease: easeOut } }
+}
+
 export function Testimonials() {
   return (
-    <section className="bg-gradient-to-b from-background to-muted py-20 sm:py-24 relative overflow-hidden">
+    <motion.section 
+      className="bg-gradient-to-b from-background to-muted py-20 sm:py-24 relative overflow-hidden"
+      initial="hidden"
+      whileInView="show"
+      viewport={{ once: true }}
+      variants={{
+        hidden: { opacity: 0 },
+        show: { opacity: 1 }
+      }}
+    >
       {/* Background decoration */}
-      <div className="absolute top-0 right-0 w-96 h-96 bg-primary/10 rounded-full blur-3xl" />
-      <div className="absolute bottom-0 left-0 w-96 h-96 bg-accent/10 rounded-full blur-3xl" />
+      <motion.div 
+        className="absolute top-0 right-0 w-96 h-96 bg-primary/10 rounded-full blur-3xl"
+        animate={{
+          y: [0, 40, 0],
+          x: [0, -30, 0]
+        }}
+        transition={{
+          duration: 8,
+          repeat: Infinity,
+          ease: easeInOut
+        }}
+      />
+      <motion.div 
+        className="absolute bottom-0 left-0 w-96 h-96 bg-accent/10 rounded-full blur-3xl"
+        animate={{
+          y: [0, -40, 0],
+          x: [0, 30, 0]
+        }}
+        transition={{
+          duration: 8,
+          repeat: Infinity,
+          ease: easeInOut,
+          delay: 1
+        }}
+      />
 
       <div className="mx-auto max-w-7xl px-4 sm:px-6 relative z-10">
         {/* Header */}
-        <div className="mx-auto max-w-2xl text-center mb-16">
-          <div className="inline-flex items-center gap-2 rounded-full bg-primary/10 px-4 py-1.5 text-sm font-semibold text-primary mb-4">
+        <motion.div 
+          className="mx-auto max-w-2xl text-center mb-16"
+          variants={itemVariants}
+          initial="hidden"
+          whileInView="show"
+          viewport={{ once: true }}
+        >
+          <motion.div 
+            className="inline-flex items-center gap-2 rounded-full bg-primary/10 px-4 py-1.5 text-sm font-semibold text-primary mb-4"
+            whileHover={{ scale: 1.05 }}
+          >
             Customer Reviews
-          </div>
+          </motion.div>
           <h2 className="text-3xl sm:text-4xl font-bold text-foreground mb-4">
             What Our Customers Say
           </h2>
           <p className="text-lg text-muted-foreground">
             Don't just take our word for it - hear from the people who trust us with their poultry needs
           </p>
-        </div>
+        </motion.div>
 
         {/* Testimonials Grid */}
-        <div className="grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-3">
-          {testimonials.map((testimonial, index) => (
-            <div
+        <motion.div 
+          className="grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-3"
+          variants={containerVariants}
+          initial="hidden"
+          whileInView="show"
+          viewport={{ once: true }}
+        >
+          {testimonials.map((testimonial) => (
+            <motion.div
               key={testimonial.name}
-              className="animate-fade-in-up"
-              style={{ animationDelay: `${index * 100}ms` }}
+              variants={itemVariants}
             >
-              <Card className="h-full p-6 sm:p-8 border-2 border-border hover:border-primary hover:shadow-xl transition-all duration-300 hover:-translate-y-1 group relative overflow-hidden">
-                {/* Gradient overlay */}
-                <div className={`absolute top-0 right-0 w-32 h-32 bg-gradient-to-br ${testimonial.color} opacity-0 group-hover:opacity-5 transition-opacity duration-300 rounded-bl-full`} />
-                
-                <div className="relative flex flex-col h-full">
-                  {/* Quote Icon */}
-                  <div className="mb-4">
-                    <svg className="w-10 h-10 text-primary/20 group-hover:text-primary/30 transition-colors" fill="currentColor" viewBox="0 0 24 24">
-                      <path d="M14.017 21v-7.391c0-5.704 3.731-9.57 8.983-10.609l.995 2.151c-2.432.917-3.995 3.638-3.995 5.849h4v10h-9.983zm-14.017 0v-7.391c0-5.704 3.748-9.57 9-10.609l.996 2.151c-2.433.917-3.996 3.638-3.996 5.849h3.983v10h-9.983z" />
-                    </svg>
-                  </div>
-
-                  {/* Rating */}
-                  <div className="flex gap-1 mb-4">
-                    {[...Array(testimonial.rating)].map((_, i) => (
-                      <Star key={i} className="w-5 h-5 fill-amber-400 text-amber-400" />
-                    ))}
-                  </div>
-
-                  {/* Quote */}
-                  <blockquote className="text-foreground leading-relaxed flex-grow mb-6">
-                    "{testimonial.quote}"
-                  </blockquote>
-
-                  {/* Author */}
-                  <div className="flex items-center gap-4 pt-6 border-t border-border">
-                    {/* Avatar */}
-                    <div className={`flex-shrink-0 w-12 h-12 rounded-full bg-gradient-to-br ${testimonial.color} flex items-center justify-center text-white font-bold shadow-md`}>
-                      {testimonial.image}
+              <motion.div
+                whileHover={{ y: -4 }}
+                transition={{ duration: 0.3 }}
+              >
+                <Card className="h-full p-6 sm:p-8 border-2 border-border hover:border-primary hover:shadow-xl transition-all duration-300 group relative overflow-hidden">
+                  {/* Gradient overlay */}
+                  <div className={`absolute top-0 right-0 w-32 h-32 bg-gradient-to-br ${testimonial.color} opacity-0 group-hover:opacity-5 transition-opacity duration-300 rounded-bl-full`} />
+                  
+                  <div className="relative flex flex-col h-full">
+                    {/* Quote Icon */}
+                    <div className="mb-4">
+                      <svg className="w-10 h-10 text-primary/20 group-hover:text-primary/30 transition-colors" fill="currentColor" viewBox="0 0 24 24">
+                        <path d="M14.017 21v-7.391c0-5.704 3.731-9.57 8.983-10.609l.995 2.151c-2.432.917-3.995 3.638-3.995 5.849h4v10h-9.983zm-14.017 0v-7.391c0-5.704 3.748-9.57 9-10.609l.996 2.151c-2.433.917-3.996 3.638-3.996 5.849h3.983v10h-9.983z" />
+                      </svg>
                     </div>
-                    
-                    {/* Info */}
-                    <div className="flex-grow min-w-0">
-                      <div className="font-semibold text-foreground truncate">
-                        {testimonial.name}
+
+                    {/* Rating */}
+                    <div className="flex gap-1 mb-4">
+                      {[...Array(testimonial.rating)].map((_, i) => (
+                        <motion.div
+                          key={i}
+                          animate={{ scale: [1, 1.1, 1] }}
+                          transition={{
+                            duration: 0.6,
+                            delay: i * 0.1,
+                            repeat: Infinity,
+                            repeatType: "reverse"
+                          }}
+                        >
+                          <Star className="w-5 h-5 fill-amber-400 text-amber-400" />
+                        </motion.div>
+                      ))}
+                    </div>
+
+                    {/* Quote */}
+                    <blockquote className="text-foreground leading-relaxed flex-grow mb-6">
+                      "{testimonial.quote}"
+                    </blockquote>
+
+                    {/* Author */}
+                    <div className="flex items-center gap-4 pt-6 border-t border-border">
+                      {/* Avatar */}
+                      <div className={`flex-shrink-0 w-12 h-12 rounded-full bg-gradient-to-br ${testimonial.color} flex items-center justify-center text-white font-bold shadow-md`}>
+                        {testimonial.image}
                       </div>
-                      <div className="text-sm text-muted-foreground truncate">
-                        {testimonial.role}
+                      
+                      {/* Info */}
+                      <div className="flex-grow min-w-0">
+                        <div className="font-semibold text-foreground truncate">
+                          {testimonial.name}
+                        </div>
+                        <div className="text-sm text-muted-foreground truncate">
+                          {testimonial.role}
+                        </div>
+                      </div>
+
+                      {/* Badge */}
+                      <div className="flex-shrink-0">
+                        <span className={`inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium bg-gradient-to-r ${testimonial.color} text-white shadow-sm`}>
+                          {testimonial.type}
+                        </span>
                       </div>
                     </div>
-
-                    {/* Badge */}
-                    <div className="flex-shrink-0">
-                      <span className={`inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium bg-gradient-to-r ${testimonial.color} text-white shadow-sm`}>
-                        {testimonial.type}
-                      </span>
-                    </div>
                   </div>
-                </div>
-              </Card>
-            </div>
+                </Card>
+              </motion.div>
+            </motion.div>
           ))}
-        </div>
+        </motion.div>
 
         {/* Trust badges */}
-        <div className="mt-16 pt-12 border-t border-slate-200">
+        <motion.div 
+          className="mt-16 pt-12 border-t border-border"
+          initial={{ opacity: 0 }}
+          whileInView={{ opacity: 1 }}
+          viewport={{ once: true }}
+          transition={{ duration: 0.6, delay: 0.3 }}
+        >
           <div className="flex flex-wrap items-center justify-center gap-8 sm:gap-12">
-            <div className="flex items-center gap-3 text-slate-600">
+            <motion.div 
+              className="flex items-center gap-3 text-muted-foreground"
+              whileHover={{ scale: 1.05 }}
+            >
               <div className="flex -space-x-2">
                 {['AB', 'KM', 'EJ', 'KA'].map((initial, i) => (
-                  <div key={i} className="w-10 h-10 rounded-full bg-gradient-to-br from-emerald-500 to-teal-500 flex items-center justify-center text-white text-xs font-bold border-2 border-white shadow-md">
+                  <motion.div 
+                    key={i} 
+                    className="w-10 h-10 rounded-full bg-gradient-to-br from-emerald-500 to-teal-500 flex items-center justify-center text-white text-xs font-bold border-2 border-white shadow-md"
+                    animate={{ y: [0, -4, 0] }}
+                    transition={{
+                      duration: 2,
+                      delay: i * 0.1,
+                      repeat: Infinity
+                    }}
+                  >
                     {initial}
-                  </div>
+                  </motion.div>
                 ))}
               </div>
               <div>
                 <div className="font-semibold text-foreground">1,200+</div>
                 <div className="text-sm">Happy Customers</div>
               </div>
-            </div>
+            </motion.div>
 
-            <div className="flex items-center gap-3 text-muted-foreground">
+            <motion.div 
+              className="flex items-center gap-3 text-muted-foreground"
+              whileHover={{ scale: 1.05 }}
+            >
               <div className="flex gap-1">
                 {[...Array(5)].map((_, i) => (
                   <Star key={i} className="w-6 h-6 fill-amber-400 text-amber-400" />
@@ -171,9 +271,12 @@ export function Testimonials() {
                 <div className="font-semibold text-foreground">4.9/5</div>
                 <div className="text-sm">Average Rating</div>
               </div>
-            </div>
+            </motion.div>
 
-            <div className="flex items-center gap-3 text-muted-foreground">
+            <motion.div 
+              className="flex items-center gap-3 text-muted-foreground"
+              whileHover={{ scale: 1.05 }}
+            >
               <div className="w-12 h-12 rounded-full bg-primary/10 flex items-center justify-center">
                 <svg className="w-6 h-6 text-primary" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" />
@@ -183,29 +286,11 @@ export function Testimonials() {
                 <div className="font-semibold text-foreground">99%</div>
                 <div className="text-sm">Satisfaction Rate</div>
               </div>
-            </div>
+            </motion.div>
           </div>
-        </div>
+        </motion.div>
       </div>
-
-      <style jsx>{`
-        @keyframes fade-in-up {
-          from {
-            opacity: 0;
-            transform: translateY(20px);
-          }
-          to {
-            opacity: 1;
-            transform: translateY(0);
-          }
-        }
-
-        .animate-fade-in-up {
-          animation: fade-in-up 0.6s ease-out forwards;
-          opacity: 0;
-        }
-      `}</style>
-    </section>
+    </motion.section>
   )
 }
 

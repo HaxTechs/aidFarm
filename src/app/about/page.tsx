@@ -53,10 +53,10 @@ export function AboutPage() {
 
         <div className="mx-auto max-w-7xl px-4 sm:px-6 relative z-10">
           <div className="mx-auto max-w-3xl text-center">
-            <h1 className="text-4xl sm:text-5xl lg:text-6xl font-bold text-white mb-6 leading-tight">
+            <h1 className="text-4xl sm:text-5xl lg:text-6xl font-bold text-primary-foreground mb-6 leading-tight">
               About AidFarm
             </h1>
-            <p className="text-xl text-white/80 leading-relaxed">
+            <p className="text-xl text-primary-foreground/80 leading-relaxed">
               Committed to delivering premium poultry with integrity, quality, and care since 2016
             </p>
           </div>
@@ -100,8 +100,8 @@ export function AboutPage() {
                       <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M3 12l2-2m0 0l7-7 7 7M5 10v10a1 1 0 001 1h3m10-11l2 2m-2-2v10a1 1 0 01-1 1h-3m-6 0a1 1 0 001-1v-4a1 1 0 011-1h2a1 1 0 011 1v4a1 1 0 001 1m-6 0h6" />
                     </svg>
                   </div>
-                  <div className="text-5xl font-bold text-emerald-700 mb-2">8+</div>
-                  <div className="text-slate-600 font-medium">Years of Excellence</div>
+                  <div className="text-5xl font-bold text-primary mb-2">8+</div>
+                  <div className="text-muted-foreground font-medium">Years of Excellence</div>
                 </div>
               </div>
             </div>
@@ -114,23 +114,23 @@ export function AboutPage() {
         <div className="mx-auto max-w-7xl px-4 sm:px-6">
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-8">
             <div className="bg-background rounded-2xl p-8 sm:p-10 border-2 border-primary/20 hover:border-primary/40 hover:shadow-xl transition-all">
-              <div className="w-16 h-16 rounded-xl bg-gradient-to-br from-emerald-500 to-teal-500 flex items-center justify-center mb-6">
-                <Target className="w-8 h-8 text-white" />
+              <div className="w-16 h-16 rounded-xl bg-gradient-to-br from-primary to-primary/80 flex items-center justify-center mb-6">
+                <Target className="w-8 h-8 text-primary-foreground" />
               </div>
-              <h3 className="text-2xl font-bold text-slate-900 mb-4">Our Mission</h3>
-              <p className="text-slate-600 leading-relaxed">
+              <h3 className="text-2xl font-bold text-foreground mb-4">Our Mission</h3>
+              <p className="text-muted-foreground leading-relaxed">
                 To provide Ghana with the highest quality poultry products through ethical farming practices, 
                 exceptional customer service, and unwavering commitment to food safety. We strive to be the 
                 preferred choice for individuals, businesses, and institutions seeking reliable poultry supply.
               </p>
             </div>
 
-            <div className="bg-white rounded-2xl p-8 sm:p-10 border-2 border-blue-100 hover:border-blue-200 hover:shadow-xl transition-all">
-              <div className="w-16 h-16 rounded-xl bg-gradient-to-br from-blue-500 to-indigo-500 flex items-center justify-center mb-6">
-                <Eye className="w-8 h-8 text-white" />
+            <div className="bg-card rounded-2xl p-8 sm:p-10 border-2 border-border hover:border-primary/40 hover:shadow-xl transition-all">
+              <div className="w-16 h-16 rounded-xl bg-gradient-to-br from-primary to-primary/80 flex items-center justify-center mb-6">
+                <Eye className="w-8 h-8 text-primary-foreground" />
               </div>
-              <h3 className="text-2xl font-bold text-slate-900 mb-4">Our Vision</h3>
-              <p className="text-slate-600 leading-relaxed">
+              <h3 className="text-2xl font-bold text-foreground mb-4">Our Vision</h3>
+              <p className="text-muted-foreground leading-relaxed">
                 To become West Africa's leading poultry farm, recognized for innovation in sustainable farming, 
                 setting the standard for quality and ethical practices in the industry. We envision a future where 
                 every Ghanaian has access to nutritious, affordable, and responsibly-raised poultry.
@@ -144,10 +144,10 @@ export function AboutPage() {
       <section className="py-20 sm:py-24">
         <div className="mx-auto max-w-7xl px-4 sm:px-6">
           <div className="text-center mb-16">
-            <div className="inline-flex items-center gap-2 rounded-full bg-emerald-100 px-4 py-1.5 text-sm font-semibold text-emerald-700 mb-4">
+            <div className="inline-flex items-center gap-2 rounded-full bg-primary/10 px-4 py-1.5 text-sm font-semibold text-primary mb-4">
               Our Values
             </div>
-            <h2 className="text-3xl sm:text-4xl font-bold text-slate-900 mb-4">
+            <h2 className="text-3xl sm:text-4xl font-bold text-foreground mb-4">
               What Drives Us Every Day
             </h2>
             <p className="text-lg text-muted-foreground max-w-2xl mx-auto">
@@ -179,31 +179,31 @@ export function AboutPage() {
       <section className="bg-gradient-to-b from-slate-50 to-white py-20 sm:py-24">
         <div className="mx-auto max-w-5xl px-4 sm:px-6">
           <div className="text-center mb-16">
-            <div className="inline-flex items-center gap-2 rounded-full bg-emerald-100 px-4 py-1.5 text-sm font-semibold text-emerald-700 mb-4">
+            <div className="inline-flex items-center gap-2 rounded-full bg-primary/10 px-4 py-1.5 text-sm font-semibold text-primary mb-4">
               Our Journey
             </div>
-            <h2 className="text-3xl sm:text-4xl font-bold text-slate-900 mb-4">
+            <h2 className="text-3xl sm:text-4xl font-bold text-foreground mb-4">
               Key Milestones
             </h2>
           </div>
 
           <div className="relative">
             {/* Timeline line */}
-            <div className="absolute left-8 top-0 bottom-0 w-0.5 bg-gradient-to-b from-emerald-500 to-teal-500 hidden sm:block" />
+            <div className="absolute left-8 top-0 bottom-0 w-0.5 bg-gradient-to-b from-primary to-primary/60 hidden sm:block" />
 
             <div className="space-y-8">
               {milestones.map((milestone, index) => (
                 <div key={index} className="relative pl-0 sm:pl-20">
                   {/* Timeline dot */}
-                  <div className="absolute left-6 top-2 w-5 h-5 rounded-full bg-gradient-to-br from-emerald-500 to-teal-500 border-4 border-white shadow-lg hidden sm:block" />
+                  <div className="absolute left-6 top-2 w-5 h-5 rounded-full bg-gradient-to-br from-primary to-primary/80 border-4 border-background shadow-lg hidden sm:block" />
                   
-                  <div className="bg-white rounded-xl p-6 border-2 border-slate-100 hover:border-emerald-200 hover:shadow-lg transition-all">
+                  <div className="bg-card rounded-xl p-6 border-2 border-border hover:border-primary hover:shadow-lg transition-all">
                     <div className="flex items-start gap-4">
-                      <div className="flex-shrink-0 w-20 h-20 rounded-lg bg-gradient-to-br from-emerald-500 to-teal-500 flex items-center justify-center text-white font-bold text-lg shadow-md">
+                      <div className="flex-shrink-0 w-20 h-20 rounded-lg bg-gradient-to-br from-primary to-primary/80 flex items-center justify-center text-primary-foreground font-bold text-lg shadow-md">
                         {milestone.year}
                       </div>
                       <div className="flex-grow pt-2">
-                        <p className="text-slate-700 leading-relaxed">{milestone.event}</p>
+                        <p className="text-foreground leading-relaxed">{milestone.event}</p>
                       </div>
                     </div>
                   </div>
@@ -215,18 +215,18 @@ export function AboutPage() {
       </section>
 
       {/* CTA Section */}
-      <section className="bg-gradient-to-r from-emerald-600 to-teal-600 py-16 sm:py-20">
+      <section className="bg-gradient-to-r from-primary to-primary/80 py-16 sm:py-20">
         <div className="mx-auto max-w-7xl px-4 sm:px-6 text-center">
-          <h2 className="text-3xl sm:text-4xl font-bold text-white mb-4">
+          <h2 className="text-3xl sm:text-4xl font-bold text-primary-foreground mb-4">
             Ready to Experience the AidFarm Difference?
           </h2>
-          <p className="text-xl text-emerald-100 mb-8 max-w-2xl mx-auto">
+          <p className="text-xl text-primary-foreground/80 mb-8 max-w-2xl mx-auto">
             Join over 1,200 satisfied customers who trust us for their poultry needs
           </p>
           <Button 
             asChild 
             size="lg"
-            className="bg-white text-emerald-600 hover:bg-emerald-50 shadow-xl hover:shadow-2xl transition-all h-14 px-8 text-base font-semibold"
+            className="bg-white text-primary hover:bg-primary/10 shadow-xl hover:shadow-2xl transition-all h-14 px-8 text-base font-semibold"
           >
             <a
               href="https://wa.me/?text=I%27m%20interested%20in%20AidFarm%20products"

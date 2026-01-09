@@ -1,6 +1,7 @@
 "use client"
 
 import * as React from "react"
+import { motion, easeInOut, easeOut } from "framer-motion"
 
 const stats = [
   { 
@@ -46,9 +47,34 @@ const stats = [
   },
 ]
 
+const containerVariants = {
+  hidden: { opacity: 0 },
+  show: {
+    opacity: 1,
+    transition: {
+      staggerChildren: 0.1,
+      delayChildren: 0.2
+    }
+  }
+}
+
+const itemVariants = {
+  hidden: { opacity: 0, y: 20 },
+  show: { opacity: 1, y: 0, transition: { duration: 0.6, ease: easeOut } }
+}
+
 export function Stats() {
   return (
-    <section className="relative bg-gradient-to-b from-primary to-primary/80 py-16 sm:py-20 overflow-hidden">
+    <motion.section 
+      className="relative bg-gradient-to-b from-primary to-primary/80 py-16 sm:py-20 overflow-hidden"
+      initial="hidden"
+      whileInView="show"
+      viewport={{ once: true }}
+      variants={{
+        hidden: { opacity: 0 },
+        show: { opacity: 1 }
+      }}
+    >
       {/* Background pattern */}
       <div className="absolute inset-0 opacity-10">
         <div className="absolute inset-0" style={{
@@ -57,47 +83,94 @@ export function Stats() {
       </div>
 
       {/* Decorative blobs */}
-      <div className="absolute top-0 left-1/4 w-96 h-96 bg-primary/20 rounded-full blur-3xl" />
-      <div className="absolute bottom-0 right-1/4 w-96 h-96 bg-primary/20 rounded-full blur-3xl" />
+      <motion.div 
+        className="absolute top-0 left-1/4 w-96 h-96 bg-primary/20 rounded-full blur-3xl"
+        animate={{
+          y: [0, 30, 0],
+          x: [0, -20, 0]
+        }}
+        transition={{
+          duration: 8,
+          repeat: Infinity,
+          ease: easeInOut
+        }}
+      />
+      <motion.div 
+        className="absolute bottom-0 right-1/4 w-96 h-96 bg-primary/20 rounded-full blur-3xl"
+        animate={{
+          y: [0, -30, 0],
+          x: [0, 20, 0]
+        }}
+        transition={{
+          duration: 8,
+          repeat: Infinity,
+          ease: easeInOut,
+          delay: 1
+        }}
+      />
 
       <div className="mx-auto max-w-7xl px-4 sm:px-6 relative z-10">
         {/* Header */}
-        <div className="text-center mb-12">
-          <div className="inline-flex items-center gap-2 rounded-full bg-white/10 backdrop-blur-sm px-4 py-1.5 text-sm font-semibold text-white mb-4">
+        <motion.div 
+          className="text-center mb-12"
+          variants={itemVariants}
+          initial="hidden"
+          whileInView="show"
+          viewport={{ once: true }}
+        >
+          <motion.div 
+            className="inline-flex items-center gap-2 rounded-full bg-white/10 backdrop-blur-sm px-4 py-1.5 text-sm font-semibold text-white mb-4"
+            whileHover={{ scale: 1.05 }}
+          >
             Our Track Record
-          </div>
+          </motion.div>
           <h2 className="text-3xl sm:text-4xl font-bold text-white mb-3">
             Trusted by Thousands
           </h2>
           <p className="text-white/80 max-w-2xl mx-auto">
             Numbers that speak to our commitment to excellence and customer satisfaction
           </p>
-        </div>
+        </motion.div>
 
         {/* Stats Grid */}
-        <div className="grid grid-cols-2 gap-6 sm:gap-8 lg:grid-cols-4 max-w-6xl mx-auto">
-          {stats.map((stat, index) => (
-            <div
+        <motion.div 
+          className="grid grid-cols-2 gap-6 sm:gap-8 lg:grid-cols-4 max-w-6xl mx-auto"
+          variants={containerVariants}
+          initial="hidden"
+          whileInView="show"
+          viewport={{ once: true }}
+        >
+          {stats.map((stat) => (
+            <motion.div
               key={stat.label}
-              className="group relative bg-white/10 backdrop-blur-sm rounded-2xl p-6 sm:p-8 border border-white/20 hover:bg-white/15 hover:border-white/30 transition-all duration-300 hover:-translate-y-1 hover:shadow-2xl animate-fade-in-up"
-              style={{ animationDelay: `${index * 100}ms` }}
+              className="group relative bg-white/10 backdrop-blur-sm rounded-2xl p-6 sm:p-8 border border-white/20 hover:bg-white/15 hover:border-white/30 transition-all duration-300 hover:shadow-2xl"
+              variants={itemVariants}
+              whileHover={{ y: -4 }}
             >
               {/* Gradient overlay on hover */}
               <div className={`absolute inset-0 rounded-2xl bg-gradient-to-br ${stat.color} opacity-0 group-hover:opacity-10 transition-opacity duration-300`} />
               
               <div className="relative flex flex-col items-center text-center space-y-3">
                 {/* Icon */}
-                <div className={`flex items-center justify-center w-16 h-16 rounded-xl bg-gradient-to-br ${stat.color} text-white shadow-lg group-hover:scale-110 transition-transform duration-300`}>
+                <motion.div 
+                  className={`flex items-center justify-center w-16 h-16 rounded-xl bg-gradient-to-br ${stat.color} text-white shadow-lg`}
+                  whileHover={{ scale: 1.1, rotate: 5 }}
+                  transition={{ duration: 0.3 }}
+                >
                   {stat.icon}
-                </div>
+                </motion.div>
 
                 {/* Value */}
                 <div>
-                  <div className="text-3xl sm:text-4xl font-bold text-white mb-1 group-hover:scale-105 transition-transform">
+                  <motion.div 
+                    className="text-3xl sm:text-4xl font-bold text-white mb-1"
+                    whileInView={{ scale: 1.05 }}
+                    transition={{ duration: 0.5 }}
+                  >
                     {stat.value}
-                  </div>
+                  </motion.div>
                   {stat.subtitle && (
-                    <div className="text-sm text-emerald-100 -mt-1">
+                    <div className="text-sm text-white/80 -mt-1">
                       {stat.subtitle}
                     </div>
                   )}
@@ -110,37 +183,28 @@ export function Stats() {
               </div>
 
               {/* Corner decoration */}
-              <div className="absolute top-3 right-3 w-2 h-2 rounded-full bg-white/40 group-hover:scale-150 transition-transform" />
-            </div>
+              <motion.div 
+                className="absolute top-3 right-3 w-2 h-2 rounded-full bg-white/40 group-hover:scale-150 transition-transform"
+                whileHover={{ scale: 1.5 }}
+              />
+            </motion.div>
           ))}
-        </div>
+        </motion.div>
 
         {/* Bottom text */}
-        <div className="mt-12 text-center">
+        <motion.div 
+          className="mt-12 text-center"
+          initial={{ opacity: 0 }}
+          whileInView={{ opacity: 1 }}
+          viewport={{ once: true }}
+          transition={{ duration: 0.6, delay: 0.4 }}
+        >
           <p className="text-white/80 text-sm sm:text-base">
             Join our growing family of satisfied customers across Ghana
           </p>
-        </div>
+        </motion.div>
       </div>
-
-      <style jsx>{`
-        @keyframes fade-in-up {
-          from {
-            opacity: 0;
-            transform: translateY(30px);
-          }
-          to {
-            opacity: 1;
-            transform: translateY(0);
-          }
-        }
-
-        .animate-fade-in-up {
-          animation: fade-in-up 0.6s ease-out forwards;
-          opacity: 0;
-        }
-      `}</style>
-    </section>
+    </motion.section>
   )
 }
 

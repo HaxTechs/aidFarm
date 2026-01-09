@@ -136,10 +136,10 @@ export function ProductsPage() {
 
         <div className="mx-auto max-w-7xl px-4 sm:px-6 relative z-10">
           <div className="mx-auto max-w-3xl text-center">
-            <h1 className="text-4xl sm:text-5xl lg:text-6xl font-bold text-white mb-6 leading-tight">
+            <h1 className="text-4xl sm:text-5xl lg:text-6xl font-bold text-primary-foreground mb-6 leading-tight">
               Our Products
             </h1>
-            <p className="text-xl text-white/80 leading-relaxed">
+            <p className="text-xl text-primary-foreground/80 leading-relaxed">
               Premium poultry products for every need - from individual families to large-scale operations
             </p>
           </div>
@@ -150,13 +150,13 @@ export function ProductsPage() {
       <section className="py-20 sm:py-24">
         <div className="mx-auto max-w-7xl px-4 sm:px-6">
           <div className="text-center mb-16">
-            <div className="inline-flex items-center gap-2 rounded-full bg-emerald-100 px-4 py-1.5 text-sm font-semibold text-emerald-700 mb-4">
+            <div className="inline-flex items-center gap-2 rounded-full bg-primary/10 px-4 py-1.5 text-sm font-semibold text-primary mb-4">
               What We Offer
             </div>
-            <h2 className="text-3xl sm:text-4xl font-bold text-slate-900 mb-4">
+            <h2 className="text-3xl sm:text-4xl font-bold text-foreground mb-4">
               Choose Your Perfect Product
             </h2>
-            <p className="text-lg text-slate-600 max-w-2xl mx-auto">
+            <p className="text-lg text-muted-foreground max-w-2xl mx-auto">
               All our products are raised with care, processed with precision, and delivered with reliability
             </p>
           </div>
@@ -189,42 +189,42 @@ export function ProductsPage() {
                       <Badge className={`${product.badgeColor} text-white border-0 mb-3`}>
                         {product.badge}
                       </Badge>
-                      <div className="text-sm font-semibold text-emerald-600 uppercase tracking-wider mb-2">
+                      <div className="text-sm font-semibold text-primary uppercase tracking-wider mb-2">
                         {product.category}
                       </div>
-                      <h3 className="text-3xl font-bold text-slate-900 mb-3">
+                      <h3 className="text-3xl font-bold text-foreground mb-3">
                         {product.name}
                       </h3>
-                      <p className="text-lg text-slate-600 leading-relaxed mb-6">
+                      <p className="text-lg text-muted-foreground leading-relaxed mb-6">
                         {product.description}
                       </p>
                     </div>
 
                     {/* Features */}
                     <div className="mb-6">
-                      <h4 className="text-sm font-semibold text-slate-900 uppercase tracking-wider mb-3">
+                      <h4 className="text-sm font-semibold text-foreground uppercase tracking-wider mb-3">
                         Features
                       </h4>
                       <div className="grid grid-cols-1 sm:grid-cols-2 gap-2">
                         {product.features.map((feature, i) => (
                           <div key={i} className="flex items-start gap-2">
-                            <Check className="w-5 h-5 text-emerald-500 flex-shrink-0 mt-0.5" />
-                            <span className="text-sm text-slate-600">{feature}</span>
+                            <Check className="w-5 h-5 text-primary flex-shrink-0 mt-0.5" />
+                            <span className="text-sm text-muted-foreground">{feature}</span>
                           </div>
                         ))}
                       </div>
                     </div>
 
                     {/* Pricing */}
-                    <div className="bg-slate-50 rounded-xl p-4 mb-6">
-                      <h4 className="text-sm font-semibold text-slate-900 uppercase tracking-wider mb-3">
+                    <div className="bg-muted rounded-xl p-4 mb-6">
+                      <h4 className="text-sm font-semibold text-foreground uppercase tracking-wider mb-3">
                         Pricing Options
                       </h4>
                       <div className="space-y-2">
                         {product.pricing.map((price, i) => (
                           <div key={i} className="flex justify-between items-center text-sm">
-                            <span className="text-slate-700">{price.size}</span>
-                            <span className="font-semibold text-slate-900">{price.price}</span>
+                            <span className="text-muted-foreground">{price.size}</span>
+                            <span className="font-semibold text-foreground">{price.price}</span>
                           </div>
                         ))}
                       </div>
@@ -257,13 +257,13 @@ export function ProductsPage() {
       <section className="bg-gradient-to-b from-slate-50 to-white py-20 sm:py-24">
         <div className="mx-auto max-w-7xl px-4 sm:px-6">
           <div className="text-center mb-16">
-            <div className="inline-flex items-center gap-2 rounded-full bg-emerald-100 px-4 py-1.5 text-sm font-semibold text-emerald-700 mb-4">
+            <div className="inline-flex items-center gap-2 rounded-full bg-primary/10 px-4 py-1.5 text-sm font-semibold text-primary mb-4">
               Value-Added Services
             </div>
-            <h2 className="text-3xl sm:text-4xl font-bold text-slate-900 mb-4">
+            <h2 className="text-3xl sm:text-4xl font-bold text-foreground mb-4">
               More Than Just Poultry
             </h2>
-            <p className="text-lg text-slate-600 max-w-2xl mx-auto">
+            <p className="text-lg text-muted-foreground max-w-2xl mx-auto">
               We go the extra mile to ensure your complete satisfaction
             </p>
           </div>
@@ -274,13 +274,13 @@ export function ProductsPage() {
               return (
                 <div
                   key={index}
-                  className="bg-white rounded-2xl p-8 border-2 border-slate-100 hover:border-emerald-200 hover:shadow-xl transition-all hover:-translate-y-1 text-center"
+                  className="bg-card rounded-2xl p-8 border-2 border-border hover:border-primary hover:shadow-xl transition-all hover:-translate-y-1 text-center"
                 >
-                  <div className="w-16 h-16 rounded-xl bg-gradient-to-br from-emerald-500 to-teal-500 flex items-center justify-center mx-auto mb-4">
-                    <Icon className="w-8 h-8 text-white" />
+                  <div className="w-16 h-16 rounded-xl bg-gradient-to-br from-primary to-primary/80 flex items-center justify-center mx-auto mb-4">
+                    <Icon className="w-8 h-8 text-primary-foreground" />
                   </div>
-                  <h3 className="text-xl font-bold text-slate-900 mb-2">{service.title}</h3>
-                  <p className="text-slate-600">{service.description}</p>
+                  <h3 className="text-xl font-bold text-foreground mb-2">{service.title}</h3>
+                  <p className="text-muted-foreground">{service.description}</p>
                 </div>
               )
             })}
@@ -289,19 +289,19 @@ export function ProductsPage() {
       </section>
 
       {/* CTA Section */}
-      <section className="bg-gradient-to-r from-emerald-600 to-teal-600 py-16 sm:py-20">
+      <section className="bg-gradient-to-r from-primary to-primary/80 py-16 sm:py-20">
         <div className="mx-auto max-w-7xl px-4 sm:px-6 text-center">
-          <h2 className="text-3xl sm:text-4xl font-bold text-white mb-4">
+          <h2 className="text-3xl sm:text-4xl font-bold text-primary-foreground mb-4">
             Need a Custom Solution?
           </h2>
-          <p className="text-xl text-emerald-100 mb-8 max-w-2xl mx-auto">
+          <p className="text-xl text-primary-foreground/80 mb-8 max-w-2xl mx-auto">
             We can tailor our products and services to meet your specific requirements
           </p>
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
             <Button 
               asChild 
               size="lg"
-              className="bg-white text-emerald-600 hover:bg-emerald-50 shadow-xl hover:shadow-2xl transition-all"
+              className="bg-background text-primary hover:bg-muted shadow-xl hover:shadow-2xl transition-all"
             >
               <a
                 href="https://wa.me/?text=I%27d%20like%20to%20discuss%20custom%20requirements"
@@ -317,7 +317,7 @@ export function ProductsPage() {
               asChild 
               size="lg"
               variant="outline"
-              className="bg-emerald-700 border-2 border-white/30 text-white hover:bg-emerald-800 hover:border-white/40"
+              className="bg-primary-foreground border-2 border-primary-foreground/30 text-primary hover:bg-primary-foreground/90 hover:border-primary-foreground/40"
             >
               <a href="tel:+233000000000" className="inline-flex items-center gap-2">
                 Call for Quote

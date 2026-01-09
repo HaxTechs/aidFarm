@@ -106,10 +106,10 @@ export function ContactPage() {
 
         <div className="mx-auto max-w-7xl px-4 sm:px-6 relative z-10">
           <div className="mx-auto max-w-3xl text-center">
-            <h1 className="text-4xl sm:text-5xl lg:text-6xl font-bold text-white mb-6 leading-tight">
+            <h1 className="text-4xl sm:text-5xl lg:text-6xl font-bold text-primary-foreground mb-6 leading-tight">
               Get In Touch
             </h1>
-            <p className="text-xl text-white/80 leading-relaxed">
+            <p className="text-xl text-primary-foreground/80 leading-relaxed">
               We're here to help with your poultry needs. Reach out through any of our contact channels.
             </p>
           </div>
@@ -134,14 +134,14 @@ export function ContactPage() {
               return (
                 <Card
                   key={index}
-                  className="p-6 border-2 border-slate-100 hover:border-emerald-200 hover:shadow-xl transition-all hover:-translate-y-1 group"
+                  className="p-6 border-2 border-border hover:border-primary hover:shadow-xl transition-all hover:-translate-y-1 group"
                 >
                   <div className={`w-14 h-14 rounded-xl bg-gradient-to-br ${method.color} flex items-center justify-center mb-4 group-hover:scale-110 transition-transform`}>
                     <Icon className="w-7 h-7 text-white" />
                   </div>
-                  <h3 className="text-lg font-bold text-slate-900 mb-1">{method.title}</h3>
-                  <p className="text-sm text-slate-600 mb-3">{method.description}</p>
-                  <p className="text-sm font-semibold text-slate-700 mb-4">{method.value}</p>
+                  <h3 className="text-lg font-bold text-foreground mb-1">{method.title}</h3>
+                  <p className="text-sm text-muted-foreground mb-3">{method.description}</p>
+                  <p className="text-sm font-semibold text-foreground mb-4">{method.value}</p>
                   <a
                     href={method.action}
                     target={method.action.startsWith('http') ? '_blank' : undefined}
@@ -162,14 +162,14 @@ export function ContactPage() {
           <div className="grid grid-cols-1 lg:grid-cols-3 gap-12">
             {/* Contact Form */}
             <div className="lg:col-span-2">
-              <Card className="p-8 border-2 border-slate-100">
-                <h3 className="text-2xl font-bold text-slate-900 mb-6">
+              <Card className="p-8 border-2 border-border">
+                <h3 className="text-2xl font-bold text-foreground mb-6">
                   Send Us a Message
                 </h3>
                 <form onSubmit={handleSubmit} className="space-y-6">
                   <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">
                     <div>
-                      <label htmlFor="name" className="block text-sm font-medium text-slate-700 mb-2">
+                      <label htmlFor="name" className="block text-sm font-medium text-foreground mb-2">
                         Full Name *
                       </label>
                       <Input
@@ -180,11 +180,11 @@ export function ContactPage() {
                         value={formData.name}
                         onChange={handleChange}
                         placeholder="John Doe"
-                        className="border-slate-300 focus:border-emerald-500 focus:ring-emerald-500"
+                        className="border-input focus:border-ring focus:ring-ring"
                       />
                     </div>
                     <div>
-                      <label htmlFor="email" className="block text-sm font-medium text-slate-700 mb-2">
+                      <label htmlFor="email" className="block text-sm font-medium text-foreground mb-2">
                         Email Address *
                       </label>
                       <Input
@@ -195,14 +195,14 @@ export function ContactPage() {
                         value={formData.email}
                         onChange={handleChange}
                         placeholder="john@example.com"
-                        className="border-slate-300 focus:border-emerald-500 focus:ring-emerald-500"
+                        className="border-input focus:border-ring focus:ring-ring"
                       />
                     </div>
                   </div>
 
                   <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">
                     <div>
-                      <label htmlFor="phone" className="block text-sm font-medium text-slate-700 mb-2">
+                      <label htmlFor="phone" className="block text-sm font-medium text-foreground mb-2">
                         Phone Number *
                       </label>
                       <Input
@@ -213,11 +213,11 @@ export function ContactPage() {
                         value={formData.phone}
                         onChange={handleChange}
                         placeholder="+233 000 000 000"
-                        className="border-slate-300 focus:border-emerald-500 focus:ring-emerald-500"
+                        className="border-input focus:border-ring focus:ring-ring"
                       />
                     </div>
                     <div>
-                      <label htmlFor="orderType" className="block text-sm font-medium text-slate-700 mb-2">
+                      <label htmlFor="orderType" className="block text-sm font-medium text-foreground mb-2">
                         Order Type *
                       </label>
                       <select
@@ -226,7 +226,7 @@ export function ContactPage() {
                         required
                         value={formData.orderType}
                         onChange={handleChange}
-                        className="w-full rounded-md border border-slate-300 bg-white px-3 py-2 text-sm text-slate-900 focus:border-emerald-500 focus:ring-emerald-500 focus:outline-none"
+                        className="w-full rounded-md border border-input bg-background px-3 py-2 text-sm text-foreground focus:border-ring focus:ring-ring focus:outline-none"
                       >
                         <option value="">Select order type</option>
                         <option value="individual">Individual/Retail</option>
@@ -239,7 +239,7 @@ export function ContactPage() {
                   </div>
 
                   <div>
-                    <label htmlFor="message" className="block text-sm font-medium text-slate-700 mb-2">
+                    <label htmlFor="message" className="block text-sm font-medium text-foreground mb-2">
                       Your Message *
                     </label>
                     <Textarea
@@ -250,20 +250,20 @@ export function ContactPage() {
                       value={formData.message}
                       onChange={handleChange}
                       placeholder="Tell us about your requirements..."
-                      className="border-slate-300 focus:border-emerald-500 focus:ring-emerald-500"
+                      className="border-input focus:border-ring focus:ring-ring"
                     />
                   </div>
 
                   <Button
                     type="submit"
                     size="lg"
-                    className="w-full bg-gradient-to-r from-emerald-600 to-teal-600 hover:from-emerald-700 hover:to-teal-700 text-white shadow-lg hover:shadow-xl transition-all"
+                    className="w-full bg-gradient-to-r from-primary to-primary/80 hover:from-primary/90 hover:to-primary/70 text-primary-foreground shadow-lg hover:shadow-xl transition-all"
                   >
                     <Send className="w-5 h-5 mr-2" />
                     Send Message
                   </Button>
 
-                  <p className="text-xs text-slate-500 text-center">
+                  <p className="text-xs text-muted-foreground text-center">
                     By submitting this form, you agree to our privacy policy and terms of service.
                   </p>
                 </form>
@@ -273,36 +273,36 @@ export function ContactPage() {
             {/* Business Hours & FAQs */}
             <div className="space-y-6">
               {/* Business Hours */}
-              <Card className="p-6 border-2 border-slate-100">
+              <Card className="p-6 border-2 border-border">
                 <div className="flex items-center gap-3 mb-4">
-                  <div className="w-10 h-10 rounded-lg bg-gradient-to-br from-emerald-500 to-teal-500 flex items-center justify-center">
-                    <Clock className="w-5 h-5 text-white" />
+                  <div className="w-10 h-10 rounded-lg bg-gradient-to-br from-primary to-primary/80 flex items-center justify-center">
+                    <Clock className="w-5 h-5 text-primary-foreground" />
                   </div>
-                  <h3 className="text-lg font-bold text-slate-900">Business Hours</h3>
+                  <h3 className="text-lg font-bold text-foreground">Business Hours</h3>
                 </div>
                 <div className="space-y-3">
                   {businessHours.map((schedule, index) => (
-                    <div key={index} className="flex justify-between items-center py-2 border-b border-slate-100 last:border-0">
-                      <span className="text-sm font-medium text-slate-700">{schedule.day}</span>
-                      <span className="text-sm text-slate-600">{schedule.hours}</span>
+                    <div key={index} className="flex justify-between items-center py-2 border-b border-border last:border-0">
+                      <span className="text-sm font-medium text-foreground">{schedule.day}</span>
+                      <span className="text-sm text-muted-foreground">{schedule.hours}</span>
                     </div>
                   ))}
                 </div>
-                <div className="mt-4 p-3 bg-emerald-50 rounded-lg">
-                  <p className="text-xs text-emerald-800">
+                <div className="mt-4 p-3 bg-primary/10 rounded-lg">
+                  <p className="text-xs text-primary">
                     <strong>Note:</strong> WhatsApp inquiries are monitored 24/7 for urgent orders
                   </p>
                 </div>
               </Card>
 
               {/* Quick FAQs */}
-              <Card className="p-6 border-2 border-slate-100">
-                <h3 className="text-lg font-bold text-slate-900 mb-4">Quick Answers</h3>
+              <Card className="p-6 border-2 border-border">
+                <h3 className="text-lg font-bold text-foreground mb-4">Quick Answers</h3>
                 <div className="space-y-4">
                   {faqs.map((faq, index) => (
                     <div key={index}>
-                      <h4 className="text-sm font-semibold text-slate-900 mb-1">{faq.question}</h4>
-                      <p className="text-sm text-slate-600">{faq.answer}</p>
+                      <h4 className="text-sm font-semibold text-foreground mb-1">{faq.question}</h4>
+                      <p className="text-sm text-muted-foreground">{faq.answer}</p>
                     </div>
                   ))}
                 </div>
@@ -313,17 +313,17 @@ export function ContactPage() {
       </section>
 
       {/* Map Section (Placeholder) */}
-      <section id="location" className="bg-slate-50 py-16">
+      <section id="location" className="bg-muted py-16">
         <div className="mx-auto max-w-7xl px-4 sm:px-6">
           <div className="text-center mb-8">
-            <h3 className="text-2xl font-bold text-slate-900 mb-2">Visit Our Farm</h3>
-            <p className="text-slate-600">Located in Accra, Greater Accra Region</p>
+            <h3 className="text-2xl font-bold text-foreground mb-2">Visit Our Farm</h3>
+            <p className="text-muted-foreground">Located in Accra, Greater Accra Region</p>
           </div>
-          <div className="aspect-video bg-slate-200 rounded-2xl flex items-center justify-center">
+          <div className="aspect-video bg-muted rounded-2xl flex items-center justify-center border-2 border-border">
             <div className="text-center">
-              <MapPin className="w-12 h-12 text-slate-400 mx-auto mb-3" />
-              <p className="text-slate-600 mb-4">Map integration placeholder</p>
-              <Button variant="outline" className="border-slate-300">
+              <MapPin className="w-12 h-12 text-muted-foreground mx-auto mb-3" />
+              <p className="text-muted-foreground mb-4">Map integration placeholder</p>
+              <Button variant="outline" className="border-border">
                 Get Directions
               </Button>
             </div>

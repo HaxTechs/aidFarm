@@ -15,7 +15,7 @@ export function Footer() {
             <div className="space-y-4">
               <div className="flex items-center gap-2">
                 <div className="w-10 h-10 rounded-lg bg-primary flex items-center justify-center shadow-lg">
-                  <svg className="w-6 h-6 text-white" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                  <svg className="w-6 h-6 text-primary-foreground" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                     <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M3 12l2-2m0 0l7-7 7 7M5 10v10a1 1 0 001 1h3m10-11l2 2m-2-2v10a1 1 0 01-1 1h-3m-6 0a1 1 0 001-1v-4a1 1 0 011-1h2a1 1 0 011 1v4a1 1 0 001 1m-6 0h6" />
                   </svg>
                 </div>
@@ -27,21 +27,21 @@ export function Footer() {
               <div className="flex gap-3">
                 <a
                   href="#"
-                  className="w-9 h-9 rounded-lg bg-slate-800 hover:bg-emerald-600 flex items-center justify-center text-slate-400 hover:text-white transition-all"
+                  className="w-9 h-9 rounded-lg bg-muted hover:bg-primary flex items-center justify-center text-muted-foreground hover:text-primary-foreground transition-all"
                   aria-label="Facebook"
                 >
                   <Facebook className="w-4 h-4" />
                 </a>
                 <a
                   href="#"
-                  className="w-9 h-9 rounded-lg bg-slate-800 hover:bg-emerald-600 flex items-center justify-center text-slate-400 hover:text-white transition-all"
+                  className="w-9 h-9 rounded-lg bg-muted hover:bg-primary flex items-center justify-center text-muted-foreground hover:text-primary-foreground transition-all"
                   aria-label="Instagram"
                 >
                   <Instagram className="w-4 h-4" />
                 </a>
                 <a
                   href="#"
-                  className="w-9 h-9 rounded-lg bg-slate-800 hover:bg-emerald-600 flex items-center justify-center text-slate-400 hover:text-white transition-all"
+                  className="w-9 h-9 rounded-lg bg-muted hover:bg-primary flex items-center justify-center text-muted-foreground hover:text-primary-foreground transition-all"
                   aria-label="Twitter"
                 >
                   <Twitter className="w-4 h-4" />
@@ -51,37 +51,37 @@ export function Footer() {
 
             {/* Quick Links */}
             <div>
-              <h3 className="text-sm font-semibold text-white uppercase tracking-wider mb-4">
+              <h3 className="text-sm font-semibold text-foreground uppercase tracking-wider mb-4">
                 Quick Links
               </h3>
               <nav className="space-y-3">
                 <Link
                   href="/"
-                  className="block text-sm text-slate-400 hover:text-emerald-400 transition-colors"
+                  className="block text-sm text-muted-foreground hover:text-primary transition-colors"
                 >
                   Home
                 </Link>
                 <Link
                   href="/about"
-                  className="block text-sm text-slate-400 hover:text-emerald-400 transition-colors"
+                  className="block text-sm text-muted-foreground hover:text-primary transition-colors"
                 >
                   About Us
                 </Link>
                 <Link
                   href="/products"
-                  className="block text-sm text-slate-400 hover:text-emerald-400 transition-colors"
+                  className="block text-sm text-muted-foreground hover:text-primary transition-colors"
                 >
                   Our Products
                 </Link>
                 <Link
                   href="/contact"
-                  className="block text-sm text-slate-400 hover:text-emerald-400 transition-colors"
+                  className="block text-sm text-muted-foreground hover:text-primary transition-colors"
                 >
                   Contact Us
                 </Link>
                 <Link
                   href="/faq"
-                  className="block text-sm text-slate-400 hover:text-emerald-400 transition-colors"
+                  className="block text-sm text-muted-foreground hover:text-primary transition-colors"
                 >
                   FAQ
                 </Link>
@@ -90,31 +90,31 @@ export function Footer() {
 
             {/* Products */}
             <div>
-              <h3 className="text-sm font-semibold text-white uppercase tracking-wider mb-4">
+              <h3 className="text-sm font-semibold text-foreground uppercase tracking-wider mb-4">
                 Our Products
               </h3>
               <nav className="space-y-3">
                 <Link
                   href="/products/chicken"
-                  className="block text-sm text-slate-400 hover:text-emerald-400 transition-colors"
+                  className="block text-sm text-muted-foreground hover:text-primary transition-colors"
                 >
                   Fresh Broiler Chicken
                 </Link>
                 <Link
                   href="/products/eggs"
-                  className="block text-sm text-slate-400 hover:text-emerald-400 transition-colors"
+                  className="block text-sm text-muted-foreground hover:text-primary transition-colors"
                 >
                   Table & Bulk Eggs
                 </Link>
                 <Link
                   href="/products/bulk"
-                  className="block text-sm text-slate-400 hover:text-emerald-400 transition-colors"
+                  className="block text-sm text-muted-foreground hover:text-primary transition-colors"
                 >
                   Bulk Supply
                 </Link>
                 <Link
                   href="/products/events"
-                  className="block text-sm text-slate-400 hover:text-emerald-400 transition-colors"
+                  className="block text-sm text-muted-foreground hover:text-primary transition-colors"
                 >
                   Restaurant & Events
                 </Link>
@@ -123,10 +123,10 @@ export function Footer() {
 
             {/* Contact Info */}
             <div>
-              <h3 className="text-sm font-semibold text-white uppercase tracking-wider mb-4">
+              <h3 className="text-sm font-semibold text-foreground uppercase tracking-wider mb-4">
                 Get In Touch
               </h3>
-              <div className="space-y-4">
+              <div className="space-y-4\">
                 <div className="flex items-start gap-3">
                   <MapPin className="w-5 h-5 text-primary flex-shrink-0 mt-0.5" />
                   <div className="text-sm text-muted-foreground">
@@ -171,12 +171,12 @@ export function Footer() {
         </div>
 
         {/* Bottom Bar */}
-        <div className="border-t border-slate-800 py-6">
+        <div className="border-t border-border py-6">
           <div className="flex flex-col sm:flex-row items-center justify-between gap-4">
             <div className="text-sm text-muted-foreground text-center sm:text-left">
               © {new Date().getFullYear()} AidFarm Ghana. All rights reserved.
             </div>
-            <div className="flex flex-wrap items-center justify-center gap-6 text-sm text-slate-400">
+            <div className="flex flex-wrap items-center justify-center gap-6 text-sm text-muted-foreground">
               <Link href="/privacy" className="hover:text-primary transition-colors">
                 Privacy Policy
               </Link>
