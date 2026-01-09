@@ -17,29 +17,57 @@ import {
   SheetFooter,
   SheetClose,
 } from "@/components/ui/sheet"
-import { Menu, Phone, MessageCircle } from "lucide-react"
+import { Menu, Phone, MessageCircle, X } from "lucide-react"
 
 export function Navbar() {
+  const [isScrolled, setIsScrolled] = React.useState(false)
+
+  React.useEffect(() => {
+    const handleScroll = () => {
+      setIsScrolled(window.scrollY > 20)
+    }
+    window.addEventListener("scroll", handleScroll)
+    return () => window.removeEventListener("scroll", handleScroll)
+  }, [])
+
   return (
-    <header className="sticky top-0 z-50 w-full bg-[var(--background)]/95 backdrop-blur-sm border-b border-[var(--border)]">
+    <header 
+      className={`sticky top-0 z-50 w-full transition-all duration-300 ${
+        isScrolled 
+          ? "bg-white/95 backdrop-blur-md shadow-sm border-b border-slate-200/60" 
+          : "bg-white/80 backdrop-blur-sm border-b border-transparent"
+      }`}
+    >
       <div className="mx-auto max-w-7xl px-4 sm:px-6">
-        <div className="flex h-14 items-center justify-between">
-          <div className="flex items-center gap-6">
+        <div className="flex h-16 items-center justify-between">
+          {/* Logo */}
+          <div className="flex items-center gap-8">
             <Link
               href="/"
-              className="text-lg font-semibold tracking-tight text-[var(--primary)]"
+              className="group flex items-center gap-2 transition-transform hover:scale-105"
             >
-              AidFarm
+              <div className="relative">
+                <div className="w-10 h-10 rounded-lg bg-gradient-to-br from-emerald-500 to-emerald-600 flex items-center justify-center shadow-md group-hover:shadow-lg transition-shadow">
+                  <svg className="w-6 h-6 text-white" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M3 12l2-2m0 0l7-7 7 7M5 10v10a1 1 0 001 1h3m10-11l2 2m-2-2v10a1 1 0 01-1 1h-3m-6 0a1 1 0 001-1v-4a1 1 0 011-1h2a1 1 0 011 1v4a1 1 0 001 1m-6 0h6" />
+                  </svg>
+                </div>
+                <div className="absolute -top-1 -right-1 w-3 h-3 bg-amber-400 rounded-full border-2 border-white" />
+              </div>
+              <span className="text-xl font-bold bg-gradient-to-r from-emerald-700 to-emerald-600 bg-clip-text text-transparent">
+                AidFarm
+              </span>
             </Link>
 
-            <nav className="hidden md:block">
+            {/* Desktop Navigation */}
+            <nav className="hidden lg:block">
               <NavigationMenu>
-                <NavigationMenuList>
+                <NavigationMenuList className="gap-1">
                   <NavigationMenuItem>
                     <NavigationMenuLink asChild>
                       <Link
                         href="/"
-                        className="text-[var(--foreground)] hover:text-[var(--primary)]"
+                        className="px-4 py-2 rounded-md text-sm font-medium text-slate-700 hover:text-emerald-600 hover:bg-emerald-50 transition-colors"
                       >
                         Home
                       </Link>
@@ -49,7 +77,7 @@ export function Navbar() {
                     <NavigationMenuLink asChild>
                       <Link
                         href="/about"
-                        className="text-[var(--foreground)] hover:text-[var(--primary)]"
+                        className="px-4 py-2 rounded-md text-sm font-medium text-slate-700 hover:text-emerald-600 hover:bg-emerald-50 transition-colors"
                       >
                         About
                       </Link>
@@ -59,7 +87,7 @@ export function Navbar() {
                     <NavigationMenuLink asChild>
                       <Link
                         href="/products"
-                        className="text-[var(--foreground)] hover:text-[var(--primary)]"
+                        className="px-4 py-2 rounded-md text-sm font-medium text-slate-700 hover:text-emerald-600 hover:bg-emerald-50 transition-colors"
                       >
                         Products
                       </Link>
@@ -69,7 +97,7 @@ export function Navbar() {
                     <NavigationMenuLink asChild>
                       <Link
                         href="/contact"
-                        className="text-[var(--foreground)] hover:text-[var(--primary)]"
+                        className="px-4 py-2 rounded-md text-sm font-medium text-slate-700 hover:text-emerald-600 hover:bg-emerald-50 transition-colors"
                       >
                         Contact
                       </Link>
@@ -80,9 +108,13 @@ export function Navbar() {
             </nav>
           </div>
 
+          {/* Desktop CTA Buttons */}
           <div className="flex items-center gap-3">
             <div className="hidden md:flex items-center gap-2">
-              <Button asChild>
+              <Button 
+                asChild
+                className="bg-gradient-to-r from-emerald-600 to-emerald-500 hover:from-emerald-700 hover:to-emerald-600 text-white shadow-sm hover:shadow-md transition-all"
+              >
                 <a
                   href="https://wa.me/?text=I%27m%20interested%20in%20AidFarm%20products"
                   target="_blank"
@@ -90,60 +122,123 @@ export function Navbar() {
                   className="inline-flex items-center gap-2"
                 >
                   <MessageCircle className="size-4" />
-                  WhatsApp
+                  <span className="hidden lg:inline">WhatsApp</span>
                 </a>
               </Button>
 
-              <Button variant="outline" asChild>
+              <Button 
+                variant="outline" 
+                asChild
+                className="border-slate-300 hover:border-emerald-500 hover:bg-emerald-50 text-slate-700 hover:text-emerald-700 transition-all"
+              >
                 <a
                   href="tel:+233000000000"
-                  className="inline-flex items-center gap-2 text-[var(--foreground)]"
+                  className="inline-flex items-center gap-2"
                 >
                   <Phone className="size-4" />
-                  Call
+                  <span className="hidden lg:inline">Call</span>
                 </a>
               </Button>
             </div>
 
-            <div className="md:hidden">
+            {/* Mobile Menu */}
+            <div className="lg:hidden">
               <Sheet>
                 <SheetTrigger asChild>
-                  <Button variant="ghost" className="size-9">
-                    <Menu className="size-5" />
+                  <Button 
+                    variant="ghost" 
+                    size="icon"
+                    className="hover:bg-emerald-50 hover:text-emerald-600"
+                  >
+                    <Menu className="size-6" />
+                    <span className="sr-only">Open menu</span>
                   </Button>
                 </SheetTrigger>
-                <SheetContent side="right">
-                  <SheetHeader>
+                <SheetContent 
+                  side="right" 
+                  className="w-full sm:w-80 bg-white border-l border-slate-200"
+                >
+                  <SheetHeader className="border-b border-slate-100 pb-4">
                     <div className="flex items-center justify-between">
-                      <span className="text-lg font-semibold text-[var(--primary)]">AidFarm</span>
-                      <SheetClose>
-                        <span className="sr-only">Close</span>
+                      <div className="flex items-center gap-2">
+                        <div className="w-8 h-8 rounded-lg bg-gradient-to-br from-emerald-500 to-emerald-600 flex items-center justify-center shadow-sm">
+                          <svg className="w-5 h-5 text-white" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M3 12l2-2m0 0l7-7 7 7M5 10v10a1 1 0 001 1h3m10-11l2 2m-2-2v10a1 1 0 01-1 1h-3m-6 0a1 1 0 001-1v-4a1 1 0 011-1h2a1 1 0 011 1v4a1 1 0 001 1m-6 0h6" />
+                          </svg>
+                        </div>
+                        <span className="text-lg font-bold text-emerald-700">AidFarm</span>
+                      </div>
+                      <SheetClose asChild>
+                        <Button variant="ghost" size="icon" className="h-8 w-8">
+                          <X className="h-5 w-5" />
+                          <span className="sr-only">Close</span>
+                        </Button>
                       </SheetClose>
                     </div>
                   </SheetHeader>
-                  <div className="flex flex-col gap-3 px-4 text-[var(--foreground)]">
-                    <Link href="/" className="py-2">Home</Link>
-                    <Link href="/about" className="py-2">About</Link>
-                    <Link href="/products" className="py-2">Products</Link>
-                    <Link href="/contact" className="py-2">Contact</Link>
-                  </div>
-                  <SheetFooter>
-                    <div className="flex w-full flex-col gap-2">
-                      <Button asChild>
+                  
+                  <nav className="flex flex-col gap-1 py-6">
+                    <SheetClose asChild>
+                      <Link 
+                        href="/" 
+                        className="px-4 py-3 rounded-lg text-base font-medium text-slate-700 hover:bg-emerald-50 hover:text-emerald-700 transition-colors"
+                      >
+                        Home
+                      </Link>
+                    </SheetClose>
+                    <SheetClose asChild>
+                      <Link 
+                        href="/about" 
+                        className="px-4 py-3 rounded-lg text-base font-medium text-slate-700 hover:bg-emerald-50 hover:text-emerald-700 transition-colors"
+                      >
+                        About
+                      </Link>
+                    </SheetClose>
+                    <SheetClose asChild>
+                      <Link 
+                        href="/products" 
+                        className="px-4 py-3 rounded-lg text-base font-medium text-slate-700 hover:bg-emerald-50 hover:text-emerald-700 transition-colors"
+                      >
+                        Products
+                      </Link>
+                    </SheetClose>
+                    <SheetClose asChild>
+                      <Link 
+                        href="/contact" 
+                        className="px-4 py-3 rounded-lg text-base font-medium text-slate-700 hover:bg-emerald-50 hover:text-emerald-700 transition-colors"
+                      >
+                        Contact
+                      </Link>
+                    </SheetClose>
+                  </nav>
+
+                  <SheetFooter className="border-t border-slate-100 pt-6">
+                    <div className="flex w-full flex-col gap-3">
+                      <Button 
+                        asChild
+                        className="w-full bg-gradient-to-r from-emerald-600 to-emerald-500 hover:from-emerald-700 hover:to-emerald-600 text-white shadow-sm"
+                      >
                         <a
                           href="https://wa.me/?text=I%27m%20interested%20in%20AidFarm%20products"
                           target="_blank"
                           rel="noopener noreferrer"
-                          className="w-full inline-flex items-center justify-center gap-2"
+                          className="inline-flex items-center justify-center gap-2"
                         >
-                          <MessageCircle className="size-4" />
-                          WhatsApp
+                          <MessageCircle className="size-5" />
+                          WhatsApp Us
                         </a>
                       </Button>
-                      <Button variant="outline" asChild>
-                        <a href="tel:+233000000000" className="w-full inline-flex items-center justify-center gap-2">
-                          <Phone className="size-4" />
-                          Call
+                      <Button 
+                        variant="outline" 
+                        asChild
+                        className="w-full border-slate-300 hover:border-emerald-500 hover:bg-emerald-50 text-slate-700 hover:text-emerald-700"
+                      >
+                        <a 
+                          href="tel:+233000000000" 
+                          className="inline-flex items-center justify-center gap-2"
+                        >
+                          <Phone className="size-5" />
+                          Call Us Now
                         </a>
                       </Button>
                     </div>
