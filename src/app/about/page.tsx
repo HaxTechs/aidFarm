@@ -33,11 +33,11 @@ export function AboutPage() {
   ]
 
   const milestones = [
-    { year: "2016", event: "AidFarm founded with a vision to revolutionize poultry farming in Ghana" },
-    { year: "2018", event: "Expanded operations to serve 500+ customers across Greater Accra" },
-    { year: "2020", event: "Introduced bulk supply service for restaurants and wholesalers" },
-    { year: "2022", event: "Reached 1,000+ satisfied customers milestone" },
-    { year: "2024", event: "Launched nationwide delivery service covering all regions of Ghana" },
+    { year: "2025", event: "AidFarm founded with a vision to revolutionize poultry farming in Ghana" },
+    { year: "Q2 2025", event: "Expanded operations to serve 500+ customers across Greater Accra" },
+    { year: "Q3 2025", event: "Introduced bulk supply service for restaurants and wholesalers" },
+    { year: "Q4 2025", event: "Reached 1,000+ satisfied customers milestone" },
+    { year: "2025", event: "Launched nationwide delivery service covering all regions of Ghana" },
     { year: "2026", event: "Processing 5,000+ birds monthly with 99% on-time delivery rate" }
   ]
 
@@ -57,7 +57,7 @@ export function AboutPage() {
               About AidFarm
             </h1>
             <p className="text-xl text-primary-foreground/80 leading-relaxed">
-              Committed to delivering premium poultry with integrity, quality, and care since 2016
+              Committed to delivering premium poultry with integrity, quality, and care since 2025
             </p>
           </div>
         </div>
@@ -76,7 +76,7 @@ export function AboutPage() {
               </h2>
               <div className="space-y-4 text-lg text-muted-foreground leading-relaxed">
                 <p>
-                  AidFarm was founded in 2016 with a simple but powerful vision: to provide Ghanaians with access to fresh, 
+                  AidFarm was founded in 2025 with a simple but powerful vision: to provide Ghanaians with access to fresh, 
                   high-quality poultry raised with ethical farming practices. What started as a small operation has grown 
                   into one of Ghana's most trusted poultry suppliers.
                 </p>

@@ -97,7 +97,7 @@ export function Hero() {
                 animate={{ scale: [1, 1.2, 1] }}
                 transition={{ duration: 2, repeat: Infinity }}
               />
-              Farm-Fresh Quality Since 2016
+              Farm-Fresh Quality Since 2025
             </div>
           </motion.div>
 
