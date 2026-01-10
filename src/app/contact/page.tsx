@@ -5,9 +5,9 @@ import { Button } from "@/components/ui/button"
 import { Input } from "@/components/ui/input"
 import { Textarea } from "@/components/ui/textarea"
 import { Card } from "@/components/ui/card"
-import { MapPin, Phone, Mail, MessageCircle, Clock, Send } from "lucide-react"
+import { MapPin, Phone, Mail, MessageCircle, Clock, Send, CheckCircle2 } from "lucide-react"
 
-export function ContactPage() {
+export default function ContactPage() {
   const [formData, setFormData] = React.useState({
     name: "",
     email: "",
@@ -18,7 +18,6 @@ export function ContactPage() {
 
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault()
-    // In a real app, this would send to a backend
     const whatsappMessage = `Name: ${formData.name}%0AEmail: ${formData.email}%0APhone: ${formData.phone}%0AOrder Type: ${formData.orderType}%0AMessage: ${formData.message}`
     window.open(`https://wa.me/?text=${whatsappMessage}`, '_blank')
   }
@@ -97,7 +96,7 @@ export function ContactPage() {
   return (
     <div className="min-h-screen bg-background">
       {/* Hero Section */}
-      <section className="relative bg-gradient-to-br from-primary via-primary/80 to-primary/60 py-20 sm:py-24 overflow-hidden">
+      <section className="relative bg-gradient-to-br from-primary via-primary/90 to-primary/70 py-20 sm:py-24 overflow-hidden">
         <div className="absolute inset-0 opacity-10">
           <div className="absolute inset-0" style={{
             backgroundImage: `url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%23ffffff' fill-opacity='1'%3E%3Cpath d='M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E")`,
@@ -109,7 +108,7 @@ export function ContactPage() {
             <h1 className="text-4xl sm:text-5xl lg:text-6xl font-bold text-primary-foreground mb-6 leading-tight">
               Get In Touch
             </h1>
-            <p className="text-xl text-primary-foreground/80 leading-relaxed">
+            <p className="text-xl text-primary-foreground/90 leading-relaxed">
               We're here to help with your poultry needs. Reach out through any of our contact channels.
             </p>
           </div>
@@ -134,43 +133,54 @@ export function ContactPage() {
               return (
                 <Card
                   key={index}
-                  className="p-6 border-2 border-border hover:border-primary hover:shadow-xl transition-all hover:-translate-y-1 group shadow-md dark:shadow-lg"
+                  className="p-6 border-2 border-border hover:border-primary hover:shadow-xl transition-all group relative overflow-hidden"
                 >
-                  <div className={`w-14 h-14 rounded-xl bg-gradient-to-br ${method.color} flex items-center justify-center mb-4 group-hover:scale-110 transition-transform`}>
-                    <Icon className="w-7 h-7 text-white" />
+                  {/* Gradient background on hover */}
+                  <div className={`absolute inset-0 bg-gradient-to-br ${method.color} opacity-0 group-hover:opacity-5 transition-opacity`} />
+                  
+                  <div className="relative">
+                    <div className={`w-14 h-14 rounded-xl bg-gradient-to-br ${method.color} flex items-center justify-center mb-4 group-hover:scale-110 transition-transform shadow-md`}>
+                      <Icon className="w-7 h-7 text-white" />
+                    </div>
+                    <h3 className="text-lg font-bold text-foreground mb-1">{method.title}</h3>
+                    <p className="text-sm text-muted-foreground mb-3">{method.description}</p>
+                    <p className="text-sm font-semibold text-foreground mb-4">{method.value}</p>
+                    <a
+                      href={method.action}
+                      target={method.action.startsWith('http') ? '_blank' : undefined}
+                      rel={method.action.startsWith('http') ? 'noopener noreferrer' : undefined}
+                      className="inline-flex items-center gap-2 text-sm font-medium text-primary hover:text-primary/80 transition-colors"
+                    >
+                      {method.actionLabel}
+                      <svg className="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
+                      </svg>
+                    </a>
                   </div>
-                  <h3 className="text-lg font-bold text-foreground mb-1">{method.title}</h3>
-                  <p className="text-sm text-muted-foreground mb-3">{method.description}</p>
-                  <p className="text-sm font-semibold text-foreground mb-4">{method.value}</p>
-                  <a
-                    href={method.action}
-                    target={method.action.startsWith('http') ? '_blank' : undefined}
-                    rel={method.action.startsWith('http') ? 'noopener noreferrer' : undefined}
-                    className={`inline-flex items-center gap-2 text-sm font-medium bg-gradient-to-r ${method.color} bg-clip-text text-transparent hover:opacity-80 transition-opacity`}
-                  >
-                    {method.actionLabel}
-                    <svg className="w-4 h-4" fill="currentColor" viewBox="0 0 20 20">
-                      <path fillRule="evenodd" d="M10.293 5.293a1 1 0 011.414 0l4 4a1 1 0 010 1.414l-4 4a1 1 0 01-1.414-1.414L12.586 11H5a1 1 0 110-2h7.586l-2.293-2.293a1 1 0 010-1.414z" clipRule="evenodd" />
-                    </svg>
-                  </a>
                 </Card>
               )
             })}
           </div>
 
           {/* Contact Form & Info */}
-          <div className="grid grid-cols-1 lg:grid-cols-3 gap-12">
+          <div className="grid grid-cols-1 lg:grid-cols-3 gap-8">
             {/* Contact Form */}
             <div className="lg:col-span-2">
-              <Card className="p-8 border-2 border-border shadow-md dark:shadow-lg">
-                <h3 className="text-2xl font-bold text-foreground mb-6">
-                  Send Us a Message
-                </h3>
+              <Card className="p-8 sm:p-10 border-2 border-border shadow-md">
+                <div className="mb-8">
+                  <h3 className="text-2xl sm:text-3xl font-bold text-foreground mb-2">
+                    Send Us a Message
+                  </h3>
+                  <p className="text-muted-foreground">
+                    Fill out the form below and we'll get back to you as soon as possible
+                  </p>
+                </div>
+                
                 <form onSubmit={handleSubmit} className="space-y-6">
                   <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">
                     <div>
-                      <label htmlFor="name" className="block text-sm font-medium text-foreground mb-2">
-                        Full Name *
+                      <label htmlFor="name" className="block text-sm font-semibold text-foreground mb-2">
+                        Full Name <span className="text-primary">*</span>
                       </label>
                       <Input
                         id="name"
@@ -180,12 +190,12 @@ export function ContactPage() {
                         value={formData.name}
                         onChange={handleChange}
                         placeholder="John Doe"
-                        className="border-input focus:border-ring focus:ring-ring"
+                        className="h-12 border-border focus:border-primary focus:ring-primary"
                       />
                     </div>
                     <div>
-                      <label htmlFor="email" className="block text-sm font-medium text-foreground mb-2">
-                        Email Address *
+                      <label htmlFor="email" className="block text-sm font-semibold text-foreground mb-2">
+                        Email Address <span className="text-primary">*</span>
                       </label>
                       <Input
                         id="email"
@@ -195,15 +205,15 @@ export function ContactPage() {
                         value={formData.email}
                         onChange={handleChange}
                         placeholder="john@example.com"
-                        className="border-input focus:border-ring focus:ring-ring"
+                        className="h-12 border-border focus:border-primary focus:ring-primary"
                       />
                     </div>
                   </div>
 
                   <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">
                     <div>
-                      <label htmlFor="phone" className="block text-sm font-medium text-foreground mb-2">
-                        Phone Number *
+                      <label htmlFor="phone" className="block text-sm font-semibold text-foreground mb-2">
+                        Phone Number <span className="text-primary">*</span>
                       </label>
                       <Input
                         id="phone"
@@ -213,12 +223,12 @@ export function ContactPage() {
                         value={formData.phone}
                         onChange={handleChange}
                         placeholder="+233 000 000 000"
-                        className="border-input focus:border-ring focus:ring-ring"
+                        className="h-12 border-border focus:border-primary focus:ring-primary"
                       />
                     </div>
                     <div>
-                      <label htmlFor="orderType" className="block text-sm font-medium text-foreground mb-2">
-                        Order Type *
+                      <label htmlFor="orderType" className="block text-sm font-semibold text-foreground mb-2">
+                        Order Type <span className="text-primary">*</span>
                       </label>
                       <select
                         id="orderType"
@@ -226,7 +236,7 @@ export function ContactPage() {
                         required
                         value={formData.orderType}
                         onChange={handleChange}
-                        className="w-full rounded-md border border-input bg-background px-3 py-2 text-sm text-foreground focus:border-ring focus:ring-ring focus:outline-none"
+                        className="w-full h-12 rounded-md border border-border bg-background px-4 text-sm text-foreground focus:border-primary focus:ring-primary focus:outline-none transition-colors"
                       >
                         <option value="">Select order type</option>
                         <option value="individual">Individual/Retail</option>
@@ -239,70 +249,73 @@ export function ContactPage() {
                   </div>
 
                   <div>
-                    <label htmlFor="message" className="block text-sm font-medium text-foreground mb-2">
-                      Your Message *
+                    <label htmlFor="message" className="block text-sm font-semibold text-foreground mb-2">
+                      Your Message <span className="text-primary">*</span>
                     </label>
                     <Textarea
                       id="message"
                       name="message"
                       required
-                      rows={5}
+                      rows={6}
                       value={formData.message}
                       onChange={handleChange}
                       placeholder="Tell us about your requirements..."
-                      className="border-input focus:border-ring focus:ring-ring"
+                      className="border-border focus:border-primary focus:ring-primary resize-none"
                     />
                   </div>
 
                   <Button
                     type="submit"
                     size="lg"
-                    className="w-full bg-gradient-to-r from-primary to-primary/80 hover:from-primary/90 hover:to-primary/70 text-primary-foreground shadow-lg hover:shadow-xl transition-all"
+                    className="w-full bg-gradient-to-r from-primary to-primary/90 hover:from-primary/90 hover:to-primary/80 text-primary-foreground shadow-lg hover:shadow-xl transition-all h-12"
                   >
                     <Send className="w-5 h-5 mr-2" />
                     Send Message
                   </Button>
 
-                  <p className="text-xs text-muted-foreground text-center">
+                  <p className="text-xs text-muted-foreground text-center pt-2">
                     By submitting this form, you agree to our privacy policy and terms of service.
                   </p>
                 </form>
               </Card>
             </div>
 
-            {/* Business Hours & FAQs */}
+            {/* Sidebar */}
             <div className="space-y-6">
               {/* Business Hours */}
-              <Card className="p-6 border-2 border-border shadow-md dark:shadow-lg">
-                <div className="flex items-center gap-3 mb-4">
-                  <div className="w-10 h-10 rounded-lg bg-gradient-to-br from-primary to-primary/80 flex items-center justify-center">
-                    <Clock className="w-5 h-5 text-primary-foreground" />
+              <Card className="p-6 border-2 border-border">
+                <div className="flex items-center gap-3 mb-6">
+                  <div className="w-12 h-12 rounded-xl bg-gradient-to-br from-primary to-primary/80 flex items-center justify-center shadow-md">
+                    <Clock className="w-6 h-6 text-primary-foreground" />
                   </div>
                   <h3 className="text-lg font-bold text-foreground">Business Hours</h3>
                 </div>
                 <div className="space-y-3">
                   {businessHours.map((schedule, index) => (
-                    <div key={index} className="flex justify-between items-center py-2 border-b border-border last:border-0">
+                    <div key={index} className="flex justify-between items-center py-3 border-b border-border last:border-0">
                       <span className="text-sm font-medium text-foreground">{schedule.day}</span>
                       <span className="text-sm text-muted-foreground">{schedule.hours}</span>
                     </div>
                   ))}
                 </div>
-                <div className="mt-4 p-3 bg-primary/10 rounded-lg">
-                  <p className="text-xs text-primary">
-                    <strong>Note:</strong> WhatsApp inquiries are monitored 24/7 for urgent orders
-                  </p>
+                <div className="mt-6 p-4 bg-primary/5 rounded-lg border border-primary/10">
+                  <div className="flex gap-2">
+                    <CheckCircle2 className="w-5 h-5 text-primary flex-shrink-0 mt-0.5" />
+                    <p className="text-sm text-foreground">
+                      WhatsApp inquiries monitored 24/7 for urgent orders
+                    </p>
+                  </div>
                 </div>
               </Card>
 
               {/* Quick FAQs */}
-              <Card className="p-6 border-2 border-border shadow-md dark:shadow-lg">
-                <h3 className="text-lg font-bold text-foreground mb-4">Quick Answers</h3>
-                <div className="space-y-4">
+              <Card className="p-6 border-2 border-border">
+                <h3 className="text-lg font-bold text-foreground mb-6">Quick Answers</h3>
+                <div className="space-y-5">
                   {faqs.map((faq, index) => (
-                    <div key={index}>
-                      <h4 className="text-sm font-semibold text-foreground mb-1">{faq.question}</h4>
-                      <p className="text-sm text-muted-foreground">{faq.answer}</p>
+                    <div key={index} className="pb-5 border-b border-border last:border-0 last:pb-0">
+                      <h4 className="text-sm font-semibold text-foreground mb-2">{faq.question}</h4>
+                      <p className="text-sm text-muted-foreground leading-relaxed">{faq.answer}</p>
                     </div>
                   ))}
                 </div>
@@ -312,18 +325,20 @@ export function ContactPage() {
         </div>
       </section>
 
-      {/* Map Section (Placeholder) */}
-      <section id="location" className="bg-muted py-16">
+      {/* Map Section */}
+      <section id="location" className="bg-muted py-16 sm:py-20">
         <div className="mx-auto max-w-7xl px-4 sm:px-6">
           <div className="text-center mb-8">
-            <h3 className="text-2xl font-bold text-foreground mb-2">Visit Our Farm</h3>
-            <p className="text-muted-foreground">Located in Accra, Greater Accra Region</p>
+            <h3 className="text-2xl sm:text-3xl font-bold text-foreground mb-3">Visit Our Farm</h3>
+            <p className="text-muted-foreground text-lg">Located in Accra, Greater Accra Region</p>
           </div>
-          <div className="aspect-video bg-muted rounded-2xl flex items-center justify-center border-2 border-border">
-            <div className="text-center">
-              <MapPin className="w-12 h-12 text-muted-foreground mx-auto mb-3" />
-              <p className="text-muted-foreground mb-4">Map integration placeholder</p>
-              <Button variant="outline" className="border-border">
+          <div className="aspect-video bg-background rounded-2xl flex items-center justify-center border-2 border-border shadow-md">
+            <div className="text-center p-8">
+              <div className="w-20 h-20 mx-auto mb-4 rounded-full bg-primary/10 flex items-center justify-center">
+                <MapPin className="w-10 h-10 text-primary" />
+              </div>
+              <p className="text-muted-foreground mb-6 text-lg">Map integration placeholder</p>
+              <Button variant="outline" size="lg" className="border-2">
                 Get Directions
               </Button>
             </div>
@@ -333,5 +348,3 @@ export function ContactPage() {
     </div>
   )
 }
-
-export default ContactPage
