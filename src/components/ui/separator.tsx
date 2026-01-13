@@ -1,15 +1,3 @@
-import * as React from "react"
-
-export function Separator({ className = "", ...props }: React.ComponentProps<"hr">) {
-  return (
-    <hr
-      className={`my-4 border-t border-border bg-transparent ${className}`}
-      {...props}
-    />
-  )
-}
-
-export default Separator
 "use client"
 
 import * as React from "react"
